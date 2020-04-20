@@ -97,8 +97,8 @@ public class GraphicalUserInterface extends AbstractUserInterface {
 
         @Override
         public void start(Stage stage) throws Exception {
-            Parent root = FXMLLoader.load(getClass().getResource("petting_zoo.fxml"));
-            stage.setTitle("Pleistocene Petting Zoo");
+            Parent root = FXMLLoader.load(getClass().getResource("voting_system.fxml"));
+            stage.setTitle("Voting System");
             stage.setScene(new Scene(root));
             stage.show();
         }
