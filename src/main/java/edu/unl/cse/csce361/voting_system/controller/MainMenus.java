@@ -8,6 +8,23 @@ public class MainMenus {
     // When we later migrate to Java 11, we'll want to use List.of()
 
     public static final List<Command> mainMenu = Collections.unmodifiableList(Arrays.asList(
-            //TODO: VoterCommand, ThirdPartyCommand, ElectionCreatorCommand
+    		new ContinueAsVoterCommand(),
+    		new ContinueAsCreatorCommand(),
+    		new ContinueAsThirdPartyCommand(),
+    		new ExitCommand()
+    ));
+    
+    public static final List<Command> voterMenu = Collections.unmodifiableList(Arrays.asList(
+            //TODO: Nick's job
+    		new ExitCommand()
+    ));
+    
+    public static final List<Command> creatorMenu = Collections.unmodifiableList(Arrays.asList(
+            //TODO: David's job
+    		//new EnterCandidateInformationCommand()
+    ));
+    
+    public static final List<Command> thirdPartyMenu = Collections.unmodifiableList(Arrays.asList(
+    		new ExitCommand()
     ));
 }
