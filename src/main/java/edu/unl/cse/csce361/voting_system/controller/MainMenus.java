@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import edu.unl.cse.csce361.voting_system.controller.election_creator.EnterCandidateInformationCommand;
+import edu.unl.cse.csce361.voting_system.controller.election_creator.*;
+import edu.unl.cse.csce361.voting_system.controller.thrid_party.*;
+import edu.unl.cse.csce361.voting_system.controller.voter.*;
 
 public class MainMenus {
     // When we later migrate to Java 11, we'll want to use List.of()
@@ -18,15 +20,14 @@ public class MainMenus {
     
     public static final List<Command> voterMenu = Collections.unmodifiableList(Arrays.asList(
             //TODO: Nick's job
-    		new ExitCommand()
     ));
     
     public static final List<Command> creatorMenu = Collections.unmodifiableList(Arrays.asList(
-            //TODO: David's job
     		new EnterCandidateInformationCommand()
     ));
     
     public static final List<Command> thirdPartyMenu = Collections.unmodifiableList(Arrays.asList(
-    		new ExitCommand()
+    		new SearchVoterCommand(),
+    		new DisplayVoterInformationCommand()
     ));
 }
