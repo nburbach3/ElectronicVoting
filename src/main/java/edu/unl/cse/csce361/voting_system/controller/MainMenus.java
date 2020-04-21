@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import edu.unl.cse.csce361.voting_system.controller.election_creator.*;
-import edu.unl.cse.csce361.voting_system.controller.thrid_party.*;
+import edu.unl.cse.csce361.voting_system.controller.third_party.*;
 import edu.unl.cse.csce361.voting_system.controller.voter.*;
 
 public class MainMenus {
@@ -19,7 +19,7 @@ public class MainMenus {
     ));
     
     public static final List<Command> voterMenu = Collections.unmodifiableList(Arrays.asList(
-            //TODO: Nick's job
+            new EnterVoterInformationCommand()
     ));
     
     public static final List<Command> creatorMenu = Collections.unmodifiableList(Arrays.asList(

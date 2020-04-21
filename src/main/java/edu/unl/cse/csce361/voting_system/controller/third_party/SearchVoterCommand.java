@@ -1,9 +1,8 @@
-package edu.unl.cse.csce361.voting_system.controller.thrid_party;
+package edu.unl.cse.csce361.voting_system.controller.third_party;
 
 import edu.unl.cse.csce361.voting_system.controller.Command;
 import edu.unl.cse.csce361.voting_system.model.VotingSystem;
 import edu.unl.cse.csce361.voting_system.view.UserInterfaceManager;
-import edu.unl.cse.csce361.voting_system.view.javafxview.GraphicalUserInterface;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
