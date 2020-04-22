@@ -19,7 +19,7 @@
                 </configuration>
             </plugin>
 <!-- UNCOMMENT THIS SECTION IF YOU'RE USING JAVAFX, AND BE SURE TO SET THE MAINCLASS! -->
-<!--
+
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -28,7 +28,7 @@
                     <mainClass>edu.unl.cse.csce361.voting_system.Main</mainClass>
                 </configuration>
             </plugin>
--->
+
         </plugins>
     </build>
 
@@ -72,29 +72,29 @@
 
 <!-- UNCOMMENT THE NEXT THREE SECTIONS IF YOU'RE USING JAVAFX -->
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
-<!--
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>11</version>
         </dependency>
--->
+
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-base -->
-<!--
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-base</artifactId>
             <version>11</version>
         </dependency>
--->
+
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-controls -->
-<!--
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>11</version>
         </dependency>
--->
+
 
 
         <!-- FOR TEST CODE -->
