@@ -1,5 +1,7 @@
 package edu.unl.cse.csce361.voting_system.model;
 
+import java.util.ArrayList;
+
 public class VotingSystem {
 	/*
 	 * Methods (JDBC) to communicate with
@@ -38,5 +40,25 @@ public class VotingSystem {
 		//Return well formatted String with all voter info
 		//Return "No voter information available" if table is empty
 		return "";
+	}
+	
+	public static void addProposition(Proposition proposition) {
+		//TODO: Query database to add proposition to proposition table
+	}
+	
+	public static boolean validateProposition(Proposition proposition) {
+		//TODO: Verify that proposition has not already been added to prop table
+		//Returns true if proposition has not been added, false if it already has
+		return true;
+	}
+	
+	public static ArrayList<Proposition> getPropositions() {
+		//TODO: Query database to return an ArrayList of all propositions
+		ArrayList<Proposition> propositions = new ArrayList<Proposition>();
+		return propositions;
+	}
+	
+	public static void removeProposition(Proposition proposition) {
+		//TODO: Query database to remove proposition from table
 	}
 }
