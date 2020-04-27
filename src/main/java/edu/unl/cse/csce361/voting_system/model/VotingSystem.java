@@ -115,6 +115,12 @@ public class VotingSystem {
 		// Returns true if proposition has not been added, false if it already has
 		return true;
 	}
+	
+	public static Proposition getProposition(String prop) {
+		//TODO: Query database for proposition information and create proposition object to be returned
+		Proposition proposition = null;
+		return proposition;
+	}
 
 	public static ArrayList<Proposition> getPropositions() {
 		// TODO: Query database to return an ArrayList of all propositions
