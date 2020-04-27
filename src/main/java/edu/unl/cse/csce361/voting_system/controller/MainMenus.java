@@ -23,7 +23,10 @@ public class MainMenus {
     ));
     
     public static final List<Command> creatorMenu = Collections.unmodifiableList(Arrays.asList(
-    		new EnterCandidateInformationCommand()
+    		new EnterCandidateInformationCommand(),
+    		new DeleteCandidateCommand(),
+    		new EnterPropositionInformationCommand(),
+    		new DeletePropositionCommand()
     ));
     
     public static final List<Command> thirdPartyMenu = Collections.unmodifiableList(Arrays.asList(

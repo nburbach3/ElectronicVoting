@@ -15,17 +15,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class EnterCandidateInformationCommand implements Command {
+public class DeleteCandidateCommand implements Command {
 
 	public void execute() {
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(30, 30, 30, 30));
 		grid.setVgap(5);
 		grid.setHgap(5);
-		Stage candidateCreation = new Stage();
-		candidateCreation.setTitle("Candidate Creation");
+		Stage candidateDeletion = new Stage();
+		candidateDeletion.setTitle("Candidate Deletion");
 
-		Button confirm = new Button("Add Candidate");
+		Button confirm = new Button("Delete Candidate");
 		GridPane.setConstraints(confirm, 1, 0);
 		grid.getChildren().add(confirm);
 
@@ -39,61 +39,35 @@ public class EnterCandidateInformationCommand implements Command {
 		firstName.getText();
 		GridPane.setConstraints(firstName, 0, 1);
 		grid.getChildren().add(firstName);
-		final TextField party = new TextField();
-		party.setPromptText("Enter Political Party (i.e. Republican/Democrat/etc.)");
-		party.getText();
-		GridPane.setConstraints(party, 0, 2);
-		grid.getChildren().add(party);
-		final TextField position = new TextField();
-		party.setPromptText("Enter Position Being Run For");
-		party.getText();
-		GridPane.setConstraints(party, 0, 3);
-		grid.getChildren().add(party);
 
 		final Label label = new Label();
-		GridPane.setConstraints(label, 0, 4);
+		GridPane.setConstraints(label, 0, 2);
 		GridPane.setColumnSpan(label, 2);
 		grid.getChildren().add(label);
 		Scene scene = new Scene(grid, 400, 150);
-		candidateCreation.setScene(scene);
-		candidateCreation.show();
+		candidateDeletion.setScene(scene);
+		candidateDeletion.show();
 
 		confirm.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent actionEvent) {
 				String fName = firstName.getText();
 				String lName = lastName.getText();
-				String p = party.getText();
-				String pos = position.getText();
-				Candidate candidate = new Candidate(fName, lName, p, pos, 0);
-
-				// If information has been entered for each box AND the candidate has not
-				// already been created
 				try {
-					if (firstName.getText() != "" && lastName.getText() != "" && party.getText() != ""
-							&& VotingSystem.validateCandidate(candidate)) {
-						VotingSystem.addCandidate(candidate);
-						label.setText(fName + " " + lName + " (" + p + ") has been added to the ballot for the " + pos
-								+ " Race!");
-					} else if (!VotingSystem.validateCandidate(candidate)) {
-						label.setText(fName + " " + lName + " has already been added to the ballot for the " + pos
-								+ " Race.");
-					} else {
-						label.setText("Invalid Input.");
-					}
+					Candidate candidate = VotingSystem.getCandidate(fName, lName);
+					VotingSystem.removeCandidate(candidate);
 				} catch (SQLException e) {
+					System.out.println("Error deleting candidate");
 					e.printStackTrace();
 				}
 				firstName.setText("");
 				lastName.setText("");
-				party.setText("");
-				position.setText("");
 			}
 		});
 	}
 
 	@Override
 	public String toString() {
-		return "Create Additional Candidate";
+		return "Delete Candidate";
 	}
 }
