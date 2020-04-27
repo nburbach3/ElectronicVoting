@@ -6,14 +6,20 @@ public class VotingSystem {
 	 * SQL database
 	 */
 	
-	public static void addCandidate(String firstName, String lastName, String party) {
+	public static void addCandidate(String firstName, String lastName, String party, String position) {
 		//TODO: Add candidate to database using SQL query
 	}
 	
-	public static boolean validateCandidate(String firstName, String lastName, String party) {
+	public static boolean validateCandidate(String firstName, String lastName, String party, String position) {
 		//TODO: Verify that proposed candidate has not already been created by querying their name
 		//Returns true if candidate has not been created and false if they already have
 		return true;
+	}
+	
+	public static Candidate getCandidate(String firstName, String lastName) {
+		//TODO: Query the database for candidate, create object, and return it
+		Candidate candidate = null;
+		return candidate;
 	}
 	
 	public static String getVoterInfo(String firstName, String lastName) {
