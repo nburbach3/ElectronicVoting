@@ -12,7 +12,7 @@ public class VoterBuilderTest {
 	private Voter voter = new Voter("Test", "Voter", 0);
 
 	@Test
-	public void testCandidateCreation() {
+	public void testVoterCreation() {
 		VotingSystem.addVoter(voter);
 		Voter database = VotingSystem.getVoterInfo("Test", "Voter");
 		assertEquals(voter.getFirstName(), database.getFirstName());
