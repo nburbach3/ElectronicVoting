@@ -98,6 +98,10 @@ public class VotingSystem {
 		return "";
 	}
 
+	public static void removeVoter(Voter voter) {
+		//TODO: Query database to remove voter
+	}
+	
 	public static String getAllVoterInfo() {
 		// TODO: Query Voter table to get all accessible voter info (name/wheter they
 		// have voted)
