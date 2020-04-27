@@ -90,7 +90,7 @@ public class VotingSystem {
 		}
 	}
 
-	public static Voter getVoterInfoThirdParty(String firstName, String lastName) {
+	public static Voter getVoterInfoThirdParty(String firstName, String lastName) throws SQLException {
 		ArrayList<Voter> voters = getVoters();
 
 		for (Voter voter : voters) {
@@ -108,18 +108,6 @@ public class VotingSystem {
 		return null;
 		
 	}
-
-
-	public static void removeVoter(Voter voter) {
-		//TODO: Query database to remove voter
-	}
-	
-	public static String getAllVoterInfo() {
-		// TODO: Query Voter table to get all accessible voter info (name/wheter they
-		// have voted)
-		// Return well formatted String with all voter info
-		// Return "No voter information available" if table is empty
-		return "";
 
 	public static boolean validateVoter(Voter voter) throws SQLException {
 		ArrayList<Voter> voters = getVoters();
@@ -142,7 +130,7 @@ public class VotingSystem {
 			statement = connection.createStatement();
 			rs = statement.executeQuery(query);
 			while (rs.next()) {
-				voter = new Voter(rs.getString("firstName"), rs.getString("lastName"), rs.getString("party"), rs.getInt("hasVoted"));
+				voter = new Voter(rs.getString("firstName"), rs.getString("lastName"), rs.getInt("hasVoted"));
 				voters.add(voter);
 			}
 		} finally {
@@ -153,7 +141,28 @@ public class VotingSystem {
 		return voters;
 	}
 	
-	public static ArrayList<Vote>
+	public static ArrayList<Vote> getVotes() throws SQLExcpetion {
+		String query = "SELECT * FROM Votes";
+		ArrayList<Vote> votes = new ArrayList<Vote>();
+		Vote vote = null;
+		ResultSet rs = null;
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			connection = Database.getConnection();
+			statement = connection.createStatement();
+			rs = statement.executeQuery(query);
+			while (rs.next()) {
+				vote = new Vote(rs.getString("firstName"), rs.getString("lastName"), rs.getInt("hasVoted"));
+				votes.add(vote);
+			}
+		} finally {
+			rs.close();
+			statement.close();
+			connection.close();
+		}
+		return votes;
+	}
 
 	public static void addProposition(Proposition proposition) {
 		// TODO: Query database to add proposition to proposition table
