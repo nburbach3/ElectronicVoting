@@ -34,6 +34,10 @@ public class VotingSystem {
 		//Return "Invalid Input, voter does not exist" if voter is not in database
 		return "";
 	}
+
+	public static void removeVoter(Voter voter) {
+		//TODO: Query database to remove voter
+	}
 	
 	public static String getAllVoterInfo() {
 		//TODO: Query Voter table to get all accessible voter info (name/wheter they have voted)
