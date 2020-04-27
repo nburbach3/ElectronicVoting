@@ -14,9 +14,10 @@ import edu.unl.cse.csce361.voting_system.model.VotingSystem;
 public class ElectionCreatorTest {
 	
 	private Candidate candidate = new Candidate("John", "Doe", "Republican", "Mayor", 0);
+	private Proposition proposition = new Proposition("Should we ban milk?");
 	
 	@Test
-	public void testCandidateCreation() {
+	public void testCandidateCreation() throws SQLException {
 		VotingSystem.addCandidate(candidate);
 		Candidate database = VotingSystem.getCandidate("John", "Doe");
 		assertEquals(candidate.getFirstName(), database.getFirstName());
@@ -27,7 +28,7 @@ public class ElectionCreatorTest {
 	}
 	
 	@Test
-	public void testCandidateValidation() {
+	public void testCandidateValidation() throws SQLException {
 		VotingSystem.addCandidate(candidate);
 		boolean output = VotingSystem.validateCandidate(candidate);
 		assertEquals(output, true);
@@ -48,9 +49,37 @@ public class ElectionCreatorTest {
 	}
 	
 	@Test
-	public void testPropositionCreation() {
-		Proposition proposition = new Proposition("Should we ban milk?");
+	public void testPropositionCreation() throws SQLException {
 		VotingSystem.addProposition(proposition);
-		
+		ArrayList<Proposition> database = VotingSystem.getPropositions();
+		String prop = "";
+		for (Proposition temp : database) {
+			if (temp.getProposition().equals(proposition.getProposition())) {
+				prop = temp.getProposition();
+			}
+		}
+		assertEquals(proposition, prop);
+		VotingSystem.removeProposition(proposition);
+	}
+	
+	@Test
+	public void testPropositionValidation() throws SQLException {
+		VotingSystem.addProposition(proposition);
+		boolean output = VotingSystem.validateProposition(proposition);
+		assertEquals(output, true);
+		VotingSystem.removeProposition(proposition);
+	}
+	
+	@Test
+	public void testPropositionRemoval() throws SQLException {
+		VotingSystem.addProposition(proposition);
+		ArrayList<Proposition> propositions = VotingSystem.getPropositions();
+		VotingSystem.removeProposition(proposition);
+		ArrayList<Proposition> database = VotingSystem.getPropositions();
+		boolean output = false;
+		if (propositions.size() == database.size() + 1) {
+			output = true;
+		}
+		assertEquals(output, true);
 	}
 }

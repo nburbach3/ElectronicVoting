@@ -1,6 +1,9 @@
 package edu.unl.cse.csce361.voting_system.controller.election_creator;
 
+import java.sql.SQLException;
+
 import edu.unl.cse.csce361.voting_system.controller.Command;
+import edu.unl.cse.csce361.voting_system.model.Candidate;
 import edu.unl.cse.csce361.voting_system.model.VotingSystem;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -62,14 +65,19 @@ public class EnterCandidateInformationCommand implements Command {
 				String lName = lastName.getText();
 				String p = party.getText();
 				String pos = position.getText();
+				Candidate candidate = new Candidate(fName, lName, p, pos, 0);
 
 				// If information has been entered for each box AND the candidate has not
 				// already been created
 				if (firstName.getText() != "" && lastName.getText() != "" && party.getText() != ""
 						&& VotingSystem.validateCandidate(fName, lName, p, pos)) {
-					VotingSystem.addCandidate(fName, lName, p, pos);
+					try {
+						VotingSystem.addCandidate(candidate);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 					label.setText(fName + " " + lName + " (" + p + ") has been added to the ballot for the " + pos + " Race!");
-				} else if (!VotingSystem.validateCandidate(fName, lName, p, pos)) {
+				} else if (!VotingSystem.validateCandidate(candidate)) {
 					label.setText(fName + " " + lName + " has already been added to the ballot for the " + pos + " Race.");
 				} else {
 					label.setText("Invalid Input.");
