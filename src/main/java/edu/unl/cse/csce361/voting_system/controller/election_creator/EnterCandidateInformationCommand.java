@@ -41,9 +41,14 @@ public class EnterCandidateInformationCommand implements Command {
 		party.getText();
 		GridPane.setConstraints(party, 0, 2);
 		grid.getChildren().add(party);
+		final TextField position = new TextField();
+		party.setPromptText("Enter Position Being Run For");
+		party.getText();
+		GridPane.setConstraints(party, 0, 3);
+		grid.getChildren().add(party);
 
 		final Label label = new Label();
-		GridPane.setConstraints(label, 0, 3);
+		GridPane.setConstraints(label, 0, 4);
 		GridPane.setColumnSpan(label, 2);
 		grid.getChildren().add(label);
 		Scene scene = new Scene(grid, 400, 150);
@@ -56,15 +61,16 @@ public class EnterCandidateInformationCommand implements Command {
 				String fName = firstName.getText();
 				String lName = lastName.getText();
 				String p = party.getText();
+				String pos = position.getText();
 
 				// If information has been entered for each box AND the candidate has not
 				// already been created
 				if (firstName.getText() != "" && lastName.getText() != "" && party.getText() != ""
-						&& VotingSystem.validateCandidate(fName, lName, p)) {
-					VotingSystem.addCandidate(fName, lName, p);
-					label.setText(fName + " " + lName + " (" + p + ") has been added to the ballot!");
-				} else if (!VotingSystem.validateCandidate(fName, lName, p)) {
-					label.setText(fName + " " + lName + " has already been added to the ballot.");
+						&& VotingSystem.validateCandidate(fName, lName, p, pos)) {
+					VotingSystem.addCandidate(fName, lName, p, pos);
+					label.setText(fName + " " + lName + " (" + p + ") has been added to the ballot for the " + pos + " Race!");
+				} else if (!VotingSystem.validateCandidate(fName, lName, p, pos)) {
+					label.setText(fName + " " + lName + " has already been added to the ballot for the " + pos + " Race.");
 				} else {
 					label.setText("Invalid Input.");
 				}
@@ -72,6 +78,7 @@ public class EnterCandidateInformationCommand implements Command {
 				firstName.setText("");
 				lastName.setText("");
 				party.setText("");
+				position.setText("");
 			}
 		});
 	}
