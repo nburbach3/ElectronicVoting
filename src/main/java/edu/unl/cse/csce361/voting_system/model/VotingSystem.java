@@ -2,12 +2,10 @@ package edu.unl.cse.csce361.voting_system.model;
 
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class VotingSystem {
@@ -16,8 +14,19 @@ public class VotingSystem {
 	 * SQL database
 	 */
 	
-	public static void addCandidate(String firstName, String lastName, String party, String position) {
-		//TODO: Add candidate to database using SQL query
+	public static void addCandidate(Candidate candidate) throws SQLException {
+		String values = String.format("VALUES(%s,%s,%s,%s,%i)", candidate.getFirstName(), candidate.getLastName(), candidate.getParty(), candidate.getPosition(), candidate.getVouteCount());
+		String query = "INSERT INTO Candidates(firstName, lastName, party, position, voteCount) " + values;
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			connection = Database.getConnection();
+			statement = connection.createStatement();
+			statement.executeQuery(query);
+		} finally {
+			statement.close();
+			connection.close();
+		}
 	}
 	
 	public static boolean validateCandidate(String firstName, String lastName, String party, String position) {
@@ -54,7 +63,6 @@ public class VotingSystem {
 			connection.close();
 		}
 		return candidates;
-		
 	}
 	
 	public static void removeCandidate(Candidate candidate) {
