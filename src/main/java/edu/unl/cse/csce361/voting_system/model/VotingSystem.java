@@ -22,6 +22,10 @@ public class VotingSystem {
 		return candidate;
 	}
 	
+	public static void removeCandidate(Candidate candidate) {
+		//TODO: Query database to remove candidate
+	}
+	
 	public static String getVoterInfo(String firstName, String lastName) {
 		//TODO: Query the database to get voter's first/last name, and whether or not they have voted.
 		//Return well formatted String with voter info

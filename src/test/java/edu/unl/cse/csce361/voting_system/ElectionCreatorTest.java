@@ -18,6 +18,7 @@ public class ElectionCreatorTest {
 		assertEquals(candidate.getLastName(), database.getLastName());
 		assertEquals(candidate.getParty(), database.getParty());
 		assertEquals(candidate.getPosition(), database.getPosition());
+		VotingSystem.removeCandidate(candidate);
 	}
 	
 	@Test
