@@ -90,21 +90,58 @@ public class VotingSystem {
 		}
 	}
 
-	public static String getVoterInfo(String firstName, String lastName) {
-		// TODO: Query the database to get voter's first/last name, and whether or not
-		// they have voted.
-		// Return well formatted String with voter info
-		// Return "Invalid Input, voter does not exist" if voter is not in database
-		return "";
+	public static Voter getVoterInfoThirdParty(String firstName, String lastName) {
+		ArrayList<Voter> voters = getVoters();
+
+		for (Voter voter : voters) {
+			if (voter.getFirstName().equals(firstName) && voter.getLastName().equals(lastName)) {
+				return voter;
+			}
+		}
+		return null;
+	}
+	
+	public static ArrayList<String> getVoterVotes(String firstName, String lastName) {
+		
+		
+		
+		return null;
+		
 	}
 
-	public static String getAllVoterInfo() {
-		// TODO: Query Voter table to get all accessible voter info (name/wheter they
-		// have voted)
-		// Return well formatted String with all voter info
-		// Return "No voter information available" if table is empty
-		return "";
+	public static boolean validateVoter(Voter voter) throws SQLException {
+		ArrayList<Voter> voters = getVoters();
+		if (voters.contains(voter)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
+	
+	public static ArrayList<Voter> getVoters() throws SQLException {
+		String query = "SELECT * FROM Voters";
+		ArrayList<Voter> voters = new ArrayList<Voter>();
+		Voter voter = null;
+		ResultSet rs = null;
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			connection = Database.getConnection();
+			statement = connection.createStatement();
+			rs = statement.executeQuery(query);
+			while (rs.next()) {
+				voter = new Voter(rs.getString("firstName"), rs.getString("lastName"), rs.getString("party"), rs.getInt("hasVoted"));
+				voters.add(voter);
+			}
+		} finally {
+			rs.close();
+			statement.close();
+			connection.close();
+		}
+		return voters;
+	}
+	
+	public static ArrayList<Vote>
 
 	public static void addProposition(Proposition proposition) {
 		// TODO: Query database to add proposition to proposition table
