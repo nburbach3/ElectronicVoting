@@ -1,5 +1,13 @@
 package edu.unl.cse.csce361.voting_system.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 public class VotingSystem {
 	/*
 	 * Methods (JDBC) to communicate with
@@ -20,6 +28,31 @@ public class VotingSystem {
 		//TODO: Query the database for candidate, create object, and return it
 		Candidate candidate = null;
 		return candidate;
+	}
+	
+	public static ArrayList<Candidate> getCandidates() throws SQLException{
+		String query = "SELECT * FROM Candidates";
+		ArrayList<Candidate> candidates = new ArrayList<Candidate>();
+		Candidate candidate = null;
+		ResultSet rs = null;
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			connection = Database.getConnection();
+			statement = connection.createStatement();
+			rs = statement.executeQuery(query);
+			while(rs.next()) {
+				candidate = new Candidate(rs.getString("firstName"), rs.getString("lastName"), rs.getString("party"), rs.getString("position"), rs.getInt("voteCount"));
+				candidates.add(candidate);
+				
+			}
+		} finally {
+			rs.close();
+			statement.close();
+			connection.close();
+		}
+		return candidates;
+		
 	}
 	
 	public static void removeCandidate(Candidate candidate) {

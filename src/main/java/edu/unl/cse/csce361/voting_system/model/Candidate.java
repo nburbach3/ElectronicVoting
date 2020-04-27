@@ -5,12 +5,14 @@ public class Candidate {
 	private String lastName;
 	private String party;
 	private String position;
+	private int voteCount;
 	
-	public Candidate(String firstName, String lastName, String party, String position) {
+	public Candidate(String firstName, String lastName, String party, String position, int voteCount) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.party = party;
 		this.position = position;
+		this.voteCount = voteCount;
 	}
 	
 	public String getFirstName() {
@@ -43,5 +45,13 @@ public class Candidate {
 	
 	public void setPosition(String position) {
 		this.position = position;
+	}
+	
+	public int getVouteCount() {
+		return this.voteCount;
+	}
+	
+	public void setVoteCount(int voteCount) {
+		this.voteCount = voteCount;
 	}
 }
