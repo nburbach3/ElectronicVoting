@@ -83,4 +83,8 @@ style and running static analysis.
 
 ### Commit Messages
 
-n/5
+4.5/5
+
+- No formatting issues
+
+-   "Added new file" is not a good commit message
