@@ -63,6 +63,7 @@ public class VotingSystem {
 			while (rs.next()) {
 				candidate = new Candidate(rs.getString("firstName"), rs.getString("lastName"), rs.getString("party"),
 						rs.getString("position"), rs.getInt("voteCount"));
+				candidate.setCandidateId(rs.getInt("idCandidate"));
 				candidates.add(candidate);
 
 			}
@@ -131,6 +132,7 @@ public class VotingSystem {
 			rs = statement.executeQuery(query);
 			while (rs.next()) {
 				voter = new Voter(rs.getString("firstName"), rs.getString("lastName"), rs.getInt("hasVoted"));
+				voter.setVoterId(rs.getInt("idVoter"));
 				voters.add(voter);
 			}
 		} finally {
@@ -141,9 +143,12 @@ public class VotingSystem {
 		return voters;
 	}
 	
-	public static ArrayList<Vote> getVotes() throws SQLExcpetion {
+	public static ArrayList<Vote> getVotes() throws SQLException {
 		String query = "SELECT * FROM Votes";
 		ArrayList<Vote> votes = new ArrayList<Vote>();
+		ArrayList<Candidate> candidates = getCandidates();
+		ArrayList<Voter> voters = getVoters();
+		ArrayList<Proposition> propositions = getPropositions();
 		Vote vote = null;
 		ResultSet rs = null;
 		Connection connection = null;
@@ -153,7 +158,25 @@ public class VotingSystem {
 			statement = connection.createStatement();
 			rs = statement.executeQuery(query);
 			while (rs.next()) {
-				vote = new Vote(rs.getString("firstName"), rs.getString("lastName"), rs.getInt("hasVoted"));
+				for(Voter voter : voters) {
+					if(rs.getInt("idVoter") == voter.getVoterId()) {
+						vote = new Vote(voter);
+					}
+				}
+				if(rs.getInt("IdCandidate") == 0) {
+					for(Proposition proposition : propositions) {
+						if(rs.getInt("idProposition") == proposition.getPropositionId()) {
+							vote.setProposition(proposition);
+						}
+					}
+					vote.setPropositionVote(rs.getInt("propositionSelection"));
+				} else {
+					for(Candidate candidate : candidates) {
+						if(rs.getInt("idCandidate") == candidate.getCandidateId()) {
+							vote.setCandidate(candidate);
+						}
+					}
+				}
 				votes.add(vote);
 			}
 		} finally {
@@ -180,9 +203,27 @@ public class VotingSystem {
 		return proposition;
 	}
 
-	public static ArrayList<Proposition> getPropositions() {
-		// TODO: Query database to return an ArrayList of all propositions
+	public static ArrayList<Proposition> getPropositions() throws SQLException {
+		String query = "SELECT * FROM Propositions";
 		ArrayList<Proposition> propositions = new ArrayList<Proposition>();
+		Proposition proposition = null;
+		ResultSet rs = null;
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			connection = Database.getConnection();
+			statement = connection.createStatement();
+			rs = statement.executeQuery(query);
+			while (rs.next()) {
+				proposition = new Proposition(rs.getString("proposition"), rs.getInt("voteCount"));
+				proposition.setPropositionId(rs.getInt("idProposition"));
+				propositions.add(proposition);
+			}
+		} finally {
+			rs.close();
+			statement.close();
+			connection.close();
+		}
 		return propositions;
 	}
 

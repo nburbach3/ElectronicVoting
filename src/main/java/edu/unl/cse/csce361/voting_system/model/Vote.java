@@ -1,35 +1,21 @@
 package edu.unl.cse.csce361.voting_system.model;
 
 public class Vote {
-	private String firstName;
-	private String lastName;
+	private Voter voter;
 	private Candidate candidate;
 	private Proposition proposition;
-	private boolean propositionVote;
+	private int propositionVote;
 	
-	public Vote(String firstName, String lastName, Candidate candidate, Proposition proposition, boolean propositionVote) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.candidate = candidate;
-		this.proposition = proposition;
-		this.propositionVote = propositionVote;
-		
+	public Vote(Voter voter) {
+		this.voter = voter;
 	}
 	
-	public String getFirstName() {
-		return this.firstName;
+	public Voter getVoter() {
+		return this.voter;
 	}
 	
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	
-	public String getLastName() {
-		return this.lastName;
-	}
-	
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setVoter(Voter voter) {
+		this.voter = voter;
 	}
 	
 	public Candidate getCandidate() {
@@ -48,11 +34,11 @@ public class Vote {
 		this.proposition = proposition;
 	}
 	
-	public boolean getPropositionVote() {
+	public int getPropositionVote() {
 		return this.propositionVote;
 	}
 	
-	public void setPropositionVote(boolean propositionVote) {
+	public void setPropositionVote(int propositionVote) {
 		this.propositionVote = propositionVote;
 	}
 }

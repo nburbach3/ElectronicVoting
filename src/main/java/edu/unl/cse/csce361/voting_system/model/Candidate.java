@@ -6,6 +6,7 @@ public class Candidate {
 	private String party;
 	private String position;
 	private int voteCount;
+	private int candidateId;
 	
 	public Candidate(String firstName, String lastName, String party, String position, int voteCount) {
 		this.firstName = firstName;
@@ -53,5 +54,13 @@ public class Candidate {
 	
 	public void setVoteCount(int voteCount) {
 		this.voteCount = voteCount;
+	}
+	
+	public int getCandidateId() {
+		return this.candidateId;
+	}
+	
+	public void setCandidateId(int candidateId) {
+		this.candidateId = candidateId;
 	}
 }
