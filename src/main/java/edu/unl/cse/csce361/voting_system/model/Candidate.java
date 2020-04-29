@@ -14,6 +14,7 @@ public class Candidate {
 		this.party = party;
 		this.position = position;
 		this.voteCount = voteCount;
+		this.candidateId = 0;
 	}
 	
 	public String getFirstName() {

@@ -15,7 +15,7 @@ public class VotingSystem {
 	 */
 
 	public static void addCandidate(Candidate candidate) throws SQLException {
-		String values = String.format("VALUES(%s,%s,%s,%s,%i)", candidate.getFirstName(), candidate.getLastName(),
+		String values = String.format("VALUES('%s','%s','%s','%s',%i)", candidate.getFirstName(), candidate.getLastName(),
 				candidate.getParty(), candidate.getPosition(), candidate.getVouteCount());
 		String query = "INSERT INTO Candidates(firstName, lastName, party, position, voteCount) " + values;
 		Connection connection = null;
@@ -24,7 +24,7 @@ public class VotingSystem {
 			try {
 				connection = Database.getConnection();
 				statement = connection.createStatement();
-				statement.executeQuery(query);
+				statement.executeUpdate(query);
 			} finally {
 				statement.close();
 				connection.close();
@@ -82,7 +82,13 @@ public class VotingSystem {
 		ArrayList<Candidate> candidates = getCandidates();
 		
 		for(Candidate candidate : candidates) {
-			//if(positions.containsKey(key))
+			if(positions.containsKey(candidate.getPosition())) {
+				positions.get(candidate.getPosition()).add(candidate);
+			} else {
+				ArrayList<Candidate> filteredCandidate = new ArrayList<Candidate>();
+				filteredCandidate.add(candidate);
+				positions.put(candidate.getPosition(), filteredCandidate);
+			}
 		}
 		return positions;
 	}
@@ -136,7 +142,7 @@ public class VotingSystem {
 			try {
 				connection = Database.getConnection();
 				statement = connection.createStatement();
-				statement.executeQuery(query);
+				statement.executeUpdate(query);
 			} finally {
 				statement.close();
 				connection.close();
