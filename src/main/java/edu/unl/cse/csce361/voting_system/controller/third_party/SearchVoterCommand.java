@@ -1,6 +1,9 @@
 package edu.unl.cse.csce361.voting_system.controller.third_party;
 
+import java.sql.SQLException;
+
 import edu.unl.cse.csce361.voting_system.controller.Command;
+import edu.unl.cse.csce361.voting_system.model.Voter;
 import edu.unl.cse.csce361.voting_system.model.VotingSystem;
 import edu.unl.cse.csce361.voting_system.view.UserInterfaceManager;
 import javafx.event.ActionEvent;
@@ -52,7 +55,24 @@ public class SearchVoterCommand implements Command {
 				String fName = firstName.getText();
 				String lName = lastName.getText();
 				
-				UserInterfaceManager.getUI().showInformation(VotingSystem.getVoterInfo(fName, lName));
+				Voter voter = null;
+				try {
+					voter = VotingSystem.getVoterInfoThirdParty(fName, lName);
+				} catch (SQLException e) {
+					System.out.println("SQL Exception: ");
+					e.printStackTrace();
+				}
+				String output = "Voter does not exist.";
+				
+				if (voter != null) {
+					if (voter.getHasVoted() == 0) {
+						output = voter.getLastName() + ", " + voter.getFirstName() + ": Not Voted";
+					} else {
+						output = voter.getLastName() + ", " + voter.getFirstName() + ": Voted";
+					}
+				}
+				
+				UserInterfaceManager.getUI().showInformation(output);
 				
 				firstName.setText("");
 				lastName.setText("");
