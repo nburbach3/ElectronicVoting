@@ -20,7 +20,7 @@ public class VotingSystem {
 		String query = "INSERT INTO Candidates(firstName, lastName, party, position, voteCount) " + values;
 		Connection connection = null;
 		Statement statement = null;
-		if (validateCandidate(candidate) == false) {
+		if (validateCandidate(candidate) == true) {
 			try {
 				connection = Database.getConnection();
 				statement = connection.createStatement();
@@ -84,7 +84,7 @@ public class VotingSystem {
 			while (rs.next()) {
 				candidate = new Candidate(rs.getString("firstName"), rs.getString("lastName"), rs.getString("party"),
 						rs.getString("position"), rs.getInt("voteCount"));
-				candidate.setCandidateId(rs.getInt("idCandidate"));
+				candidate.setCandidateId(rs.getInt("idCandidates"));
 				candidates.add(candidate);
 			}
 		} finally {
