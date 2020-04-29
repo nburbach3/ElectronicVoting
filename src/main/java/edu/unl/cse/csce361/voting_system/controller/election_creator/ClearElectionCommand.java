@@ -4,6 +4,7 @@ import edu.unl.cse.csce361.voting_system.controller.Command;
 import edu.unl.cse.csce361.voting_system.model.VotingSystem;
 import edu.unl.cse.csce361.voting_system.view.UserInterfaceManager;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class ClearElectionCommand implements Command {
@@ -14,9 +15,15 @@ public class ClearElectionCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public void execute(){
+    	try {
     	VotingSystem.clearElection();
         UserInterfaceManager.getUI().showInformation("Election tables have been cleared.");
+    	} catch (Exception e) {
+			System.out.println("SQL Exception: ");
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
     }
 
     @Override

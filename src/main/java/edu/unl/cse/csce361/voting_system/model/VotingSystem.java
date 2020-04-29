@@ -15,8 +15,8 @@ public class VotingSystem {
 	 */
 
 	public static void addCandidate(Candidate candidate) throws SQLException {
-		String values = String.format("VALUES('%s','%s','%s','%s',%d)", candidate.getFirstName(), candidate.getLastName(),
-				candidate.getParty(), candidate.getPosition(), candidate.getVoteCount());
+		String values = String.format("VALUES('%s','%s','%s','%s',%d)", candidate.getFirstName(),
+				candidate.getLastName(), candidate.getParty(), candidate.getPosition(), candidate.getVoteCount());
 		String query = "INSERT INTO Candidates(firstName, lastName, party, position, voteCount) " + values;
 		Connection connection = null;
 		Statement statement = null;
@@ -98,9 +98,9 @@ public class VotingSystem {
 	public static Map<String, ArrayList<Candidate>> getPositions() throws SQLException {
 		HashMap<String, ArrayList<Candidate>> positions = new HashMap<String, ArrayList<Candidate>>();
 		ArrayList<Candidate> candidates = getCandidates();
-		
-		for(Candidate candidate : candidates) {
-			if(positions.containsKey(candidate.getPosition())) {
+
+		for (Candidate candidate : candidates) {
+			if (positions.containsKey(candidate.getPosition())) {
 				positions.get(candidate.getPosition()).add(candidate);
 			} else {
 				ArrayList<Candidate> filteredCandidate = new ArrayList<Candidate>();
@@ -110,7 +110,7 @@ public class VotingSystem {
 		}
 		return positions;
 	}
-	
+
 	public static void removeCandidate(Candidate candidate) throws SQLException {
 		String query = String.format("DELETE FROM Candidates WHERE firstName='%s' AND lastName='%s'",
 				candidate.getFirstName(), candidate.getLastName());
@@ -156,14 +156,14 @@ public class VotingSystem {
 		String query = "INSERT INTO Voters (firstName, lastName, hasVoted) " + values;
 		Connection connection = null;
 		Statement statement = null;
-			try {
-				connection = Database.getConnection();
-				statement = connection.createStatement();
-				statement.executeUpdate(query);
-			} finally {
-				statement.close();
-				connection.close();
-			}
+		try {
+			connection = Database.getConnection();
+			statement = connection.createStatement();
+			statement.executeUpdate(query);
+		} finally {
+			statement.close();
+			connection.close();
+		}
 	}
 
 	public static void removeVoter(Voter voter) throws SQLException {
@@ -222,28 +222,27 @@ public class VotingSystem {
 		Integer candidateId = null;
 		Integer propositionId = null;
 		if (!validateVoter(voter)) {
-			// addVoter(voter);
+			addVoter(voter);
 		}
 		ArrayList<Voter> voters = getVoters();
 
 		for (Voter voterOption : voters) {
 			if (voter.equals(voterOption)) {
-
 				voterId = voter.getVoterId();
 			}
 		}
 		if (!candidate.equals(null)) {
 			ArrayList<Candidate> candidates = getCandidates();
 			for (Candidate candidateOption : candidates) {
-				if (candidateOption.equals(candidate)) {
+				if (candidateOption.getFirstName().equals(candidate.getFirstName())
+						&& candidateOption.getLastName().equals(candidate.getLastName())) {
 					candidateId = candidateOption.getCandidateId();
 				}
 			}
 		} else if (!proposition.equals(null)) {
 			ArrayList<Proposition> propositions = getPropositions();
 			for (Proposition propositionOption : propositions) {
-				if (propositionOption.equals(proposition)) {
-
+				if (propositionOption.getProposition().equals(proposition.getProposition())) {
 					propositionId = proposition.getPropositionId();
 				}
 			}
@@ -391,7 +390,7 @@ public class VotingSystem {
 	public static void removeProposition(Proposition proposition) throws SQLException {
 		Connection con = Database.getConnection();
 		String query = "DELETE FROM Propositions WHERE proposition = ?";
-		
+
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, proposition.getProposition());
@@ -404,7 +403,7 @@ public class VotingSystem {
 		}
 		con.close();
 	}
-	
+
 	public static void clearElection() throws SQLException {
 		String query1 = "DELETE * FROM Candidates";
 		String query2 = "DELETE * FROM Propositions";
@@ -420,7 +419,6 @@ public class VotingSystem {
 			statement.executeUpdate(query3);
 			statement.executeUpdate(query4);
 		} finally {
-			
 			statement.close();
 			connection.close();
 		}
