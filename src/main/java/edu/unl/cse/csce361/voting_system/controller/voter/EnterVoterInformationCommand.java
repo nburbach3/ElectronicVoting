@@ -54,7 +54,7 @@ public class EnterVoterInformationCommand implements Command {
                 Voter voter = new Voter (firstName.getText(), lastName.getText(), 0);
                 try {
                     if (VotingSystem.validateVoter(voter)) {
-
+                        
                     }
                 } catch (SQLException e) {
 
