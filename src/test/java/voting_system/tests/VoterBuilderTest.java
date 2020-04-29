@@ -22,4 +22,16 @@ public class VoterBuilderTest {
 		VotingSystem.removeVoter(voter);
 	}
 
+	@Test
+	public void testVoterDeletion() throws SQLException {
+		VotingSystem.addVoter(voter);
+		VotingSystem.removeVoter(voter);
+		assertNull(VotingSystem.getVoterInfoThirdParty("Test", "Voter"));
+	}
+
+	@Test
+	public void testValidateVoter() throws SQLException {
+		assertTrue(VotingSystem.validateVoter(voter));
+	}
+
 }
