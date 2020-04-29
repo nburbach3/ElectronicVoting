@@ -49,7 +49,7 @@ public class Candidate {
 		this.position = position;
 	}
 	
-	public int getVouteCount() {
+	public int getVoteCount() {
 		return this.voteCount;
 	}
 	

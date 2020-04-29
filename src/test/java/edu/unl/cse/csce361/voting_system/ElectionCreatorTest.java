@@ -58,7 +58,7 @@ public class ElectionCreatorTest {
 				prop = temp.getProposition();
 			}
 		}
-		assertEquals(proposition, prop);
+		assertEquals(proposition.getProposition(), prop);
 		VotingSystem.removeProposition(proposition);
 	}
 	

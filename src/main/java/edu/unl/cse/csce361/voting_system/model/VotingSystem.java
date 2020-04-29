@@ -15,8 +15,8 @@ public class VotingSystem {
 	 */
 
 	public static void addCandidate(Candidate candidate) throws SQLException {
-		String values = String.format("VALUES('%s','%s','%s','%s',%i)", candidate.getFirstName(), candidate.getLastName(),
-				candidate.getParty(), candidate.getPosition(), candidate.getVouteCount());
+		String values = String.format("VALUES('%s','%s','%s','%s',%d)", candidate.getFirstName(), candidate.getLastName(),
+				candidate.getParty(), candidate.getPosition(), candidate.getVoteCount());
 		String query = "INSERT INTO Candidates(firstName, lastName, party, position, voteCount) " + values;
 		Connection connection = null;
 		Statement statement = null;
@@ -42,14 +42,32 @@ public class VotingSystem {
 	}
 
 	public static Candidate getCandidate(String firstName, String lastName) throws SQLException {
-		ArrayList<Candidate> candidates = getCandidates();
+		Connection con = Database.getConnection();
+		String query = "SELECT * FROM Candidates WHERE firstName = ? AND lastName = ?";
+		Candidate candidate = null;
 
-		for (Candidate candidate : candidates) {
-			if (candidate.getFirstName().equals(firstName) && candidate.getLastName().equals(lastName)) {
-				return candidate;
+		try {
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, firstName);
+			stmt.setString(2, lastName);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				String party = rs.getString("party");
+				String position = rs.getString("position");
+				int voteCount = rs.getInt("voteCount");
+				candidate = new Candidate(firstName, lastName, party, position, voteCount);
+			} else {
+				System.out.println("Candidate does not exist.");
 			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println("SQL Exception: ");
+			e.printStackTrace();
+			throw new RuntimeException();
 		}
-		return null;
+		con.close();
+		return candidate;
 	}
 
 	public static ArrayList<Candidate> getCandidates() throws SQLException {
@@ -102,7 +120,7 @@ public class VotingSystem {
 			try {
 				connection = Database.getConnection();
 				statement = connection.createStatement();
-				statement.executeQuery(query);
+				statement.executeUpdate(query);
 			} finally {
 				statement.close();
 				connection.close();
@@ -323,7 +341,7 @@ public class VotingSystem {
 
 	public static Proposition getProposition(String prop) throws SQLException {
 		Connection con = Database.getConnection();
-		String query = "SELECT FROM Propositions WHERE proposition = ?";
+		String query = "SELECT * FROM Propositions WHERE proposition = ?";
 		Proposition proposition = null;
 
 		try {
@@ -361,7 +379,7 @@ public class VotingSystem {
 			rs = statement.executeQuery(query);
 			while (rs.next()) {
 				proposition = new Proposition(rs.getString("proposition"), rs.getInt("voteCount"));
-				proposition.setPropositionId(rs.getInt("idProposition"));
+				proposition.setPropositionId(rs.getInt("idPropositions"));
 				propositions.add(proposition);
 			}
 		} finally {
