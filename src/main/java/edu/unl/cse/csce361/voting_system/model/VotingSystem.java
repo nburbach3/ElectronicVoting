@@ -354,7 +354,20 @@ public class VotingSystem {
 		return propositions;
 	}
 
-	public static void removeProposition(Proposition proposition) {
-		// TODO: Query database to remove proposition from table
+	public static void removeProposition(Proposition proposition) throws SQLException {
+		Connection con = Database.getConnection();
+		String query = "DELETE FROM Propositions WHERE proposition = ?";
+		
+		try {
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, proposition.getProposition());
+			stmt.executeUpdate();
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println("SQL Exception: ");
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+		con.close();
 	}
 }
