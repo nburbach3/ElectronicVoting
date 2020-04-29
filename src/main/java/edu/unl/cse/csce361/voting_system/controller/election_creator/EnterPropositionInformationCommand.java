@@ -3,7 +3,6 @@ package edu.unl.cse.csce361.voting_system.controller.election_creator;
 import java.sql.SQLException;
 
 import edu.unl.cse.csce361.voting_system.controller.Command;
-import edu.unl.cse.csce361.voting_system.model.Candidate;
 import edu.unl.cse.csce361.voting_system.model.Proposition;
 import edu.unl.cse.csce361.voting_system.model.VotingSystem;
 import javafx.event.ActionEvent;
@@ -50,6 +49,7 @@ public class EnterPropositionInformationCommand implements Command {
 				try {
 					Proposition prop = new Proposition(proposition.getText(), 0);
 					VotingSystem.addProposition(prop);
+					label.setText("Proposition has been added.");
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
