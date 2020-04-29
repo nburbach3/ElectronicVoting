@@ -11,12 +11,12 @@ import java.sql.SQLException;
 
 public class VoterBuilderTest {
 
-	private Voter voter = new Voter("Test", "Voter", 0);
+	private Voter voter = new Voter("Test1", "Voter", 0);
 
 	@Test
 	public void testVoterCreation() throws SQLException {
 		VotingSystem.addVoter(voter);
-		Voter database = VotingSystem.getVoterInfoThirdParty("Test", "Voter");
+		Voter database = VotingSystem.getVoterInfoThirdParty("Test1", "Voter");
 		assertEquals(voter.getFirstName(), database.getFirstName());
 		assertEquals(voter.getLastName(), database.getLastName());
 		VotingSystem.removeVoter(voter);

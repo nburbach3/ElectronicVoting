@@ -134,11 +134,10 @@ public class VotingSystem {
 	}
 
 	public static void addVoter(Voter voter) throws SQLException {
-		String values = String.format("VALUES(%s,%s)", voter.getFirstName(), voter.getLastName());
-		String query = "INSERT INTO Voter(firstName, lastName) " + values;
+		String values = String.format("VALUES ('%s','%s', 1);", voter.getFirstName(), voter.getLastName());
+		String query = "INSERT INTO Voters (firstName, lastName, hasVoted) " + values;
 		Connection connection = null;
 		Statement statement = null;
-		if (validateVoter(voter) == false) {
 			try {
 				connection = Database.getConnection();
 				statement = connection.createStatement();
@@ -147,11 +146,10 @@ public class VotingSystem {
 				statement.close();
 				connection.close();
 			}
-		}
 	}
 
 	public static void removeVoter(Voter voter) throws SQLException {
-		String query = String.format("DELETE FROM Voter WHERE firstName='%s' AND lastName='%s'", voter.getFirstName(),
+		String query = String.format("DELETE FROM Voters WHERE firstName='%s' AND lastName='%s'", voter.getFirstName(),
 				voter.getLastName());
 		Connection connection = null;
 		Statement statement = null;
@@ -159,7 +157,7 @@ public class VotingSystem {
 			try {
 				connection = Database.getConnection();
 				statement = connection.createStatement();
-				statement.executeQuery(query);
+				statement.executeUpdate(query);
 			} finally {
 				statement.close();
 				connection.close();
@@ -189,7 +187,7 @@ public class VotingSystem {
 			rs = statement.executeQuery(query);
 			while (rs.next()) {
 				voter = new Voter(rs.getString("firstName"), rs.getString("lastName"), rs.getInt("hasVoted"));
-				voter.setVoterId(rs.getInt("idVoter"));
+				voter.setVoterId(rs.getInt("idVoters"));
 				voters.add(voter);
 			}
 		} finally {
