@@ -14,7 +14,7 @@ import edu.unl.cse.csce361.voting_system.model.VotingSystem;
 public class ElectionCreatorTest {
 	
 	private Candidate candidate = new Candidate("John", "Doe", "Republican", "Mayor", 0);
-	private Proposition proposition = new Proposition("Should we ban milk?");
+	private Proposition proposition = new Proposition("Should we ban milk?", 0);
 	
 	@Test
 	public void testCandidateCreation() throws SQLException {
