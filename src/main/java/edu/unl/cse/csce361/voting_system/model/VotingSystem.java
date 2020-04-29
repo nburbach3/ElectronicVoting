@@ -114,6 +114,39 @@ public class VotingSystem {
 		return filteredVotes;
 	}
 
+	public static void addVoter(Voter voter) throws SQLException {
+		String values = String.format("VALUES(%s,%s)", voter.getFirstName(), voter.getLastName());
+		String query = "INSERT INTO Voter(firstName, lastName) " + values;
+		Connection connection = null;
+		Statement statement = null;
+		if (validateVoter(voter) == false) {
+			try {
+				connection = Database.getConnection();
+				statement = connection.createStatement();
+				statement.executeQuery(query);
+			} finally {
+				statement.close();
+				connection.close();
+			}
+		}
+	}
+
+	public static void removeVoter(Voter voter) throws SQLException {
+		String query = String.format("DELETE FROM Voter WHERE firstName='%s' AND lastName='%s'",voter.getFirstName(),voter.getLastName());
+		Connection connection = null;
+		Statement statement = null;
+		if (validateVoter(voter) == true) {
+			try {
+				connection = Database.getConnection();
+				statement = connection.createStatement();
+				statement.executeQuery(query);
+			} finally {
+				statement.close();
+				connection.close();
+			}
+		}
+	}
+
 	public static boolean validateVoter(Voter voter) throws SQLException {
 		ArrayList<Voter> voters = getVoters();
 		if (voters.contains(voter)) {
