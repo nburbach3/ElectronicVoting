@@ -1,6 +1,7 @@
 package edu.unl.cse.csce361.voting_system.model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -273,20 +274,57 @@ public class VotingSystem {
 		return votes;
 	}
 
-	public static void addProposition(Proposition proposition) {
-		// TODO: Query database to add proposition to proposition table
+	public static void addProposition(Proposition proposition) throws SQLException {
+		Connection con = Database.getConnection();
+		String query = "INSERT INTO Propositions(proposition, voteCount) values (?,?)";
+		
+		try {
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, proposition.getProposition());
+			stmt.setInt(2, proposition.getVoteCount());
+			stmt.executeUpdate();
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println("SQL Exception: ");
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+		con.close();
 	}
 
-	public static boolean validateProposition(Proposition proposition) {
-		// TODO: Verify that proposition has not already been added to prop table
-		// Returns true if proposition has not been added, false if it already has
-		return true;
+	public static boolean validateProposition(Proposition proposition) throws SQLException {
+		ArrayList<Proposition> prop = getPropositions();
+		if (prop.contains(proposition)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
-
-	public static Proposition getProposition(String prop) {
-		// TODO: Query database for proposition information and create proposition
-		// object to be returned
+	
+	public static Proposition getProposition(String prop) throws SQLException {
+		Connection con = Database.getConnection();
+		String query = "SELECT FROM Propositions WHERE proposition = ?";
 		Proposition proposition = null;
+		
+		try {
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, prop);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				String temp = rs.getString("proposition");
+				int voteCount = rs.getInt("voteCount");
+				proposition = new Proposition(temp, voteCount);
+			} else {
+				System.out.println("Proposition does not exist.");
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println("SQL Exception: ");
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+		con.close();
 		return proposition;
 	}
 
