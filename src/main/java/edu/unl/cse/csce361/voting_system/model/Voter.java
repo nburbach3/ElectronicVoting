@@ -10,6 +10,7 @@ public class Voter {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.hasVoted = hasVoted;
+		this.voterId = 0;
 	}
 
 	public int getVoterId() {

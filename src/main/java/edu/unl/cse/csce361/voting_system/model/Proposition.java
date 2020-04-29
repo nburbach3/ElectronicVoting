@@ -7,6 +7,7 @@ public class Proposition {
 	
 	public Proposition(String proposition, int voteCount) {
 		this.proposition = proposition;
+		this.propositionId = 0;
 	}
 	
 	public String getProposition() {
