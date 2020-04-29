@@ -2,6 +2,7 @@ package edu.unl.cse.csce361.voting_system.controller.voter;
 
 import edu.unl.cse.csce361.voting_system.controller.Command;
 import edu.unl.cse.csce361.voting_system.model.VotingSystem;
+import edu.unl.cse.csce361.voting_system.model.Voter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -11,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 public class EnterVoterInformationCommand implements Command {
 
@@ -48,7 +51,14 @@ public class EnterVoterInformationCommand implements Command {
         authenticate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                //TODO: Check database for name, don't let vote if already in database
+                Voter voter = new Voter (firstName.getText(), lastName.getText(), 0);
+                try {
+                    if (VotingSystem.validateVoter(voter)) {
+
+                    }
+                } catch (SQLException e) {
+
+                }
             }
         });
     }
