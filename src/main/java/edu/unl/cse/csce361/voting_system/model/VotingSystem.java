@@ -404,4 +404,25 @@ public class VotingSystem {
 		}
 		con.close();
 	}
+	
+	public static void clearElection() throws SQLException {
+		String query1 = "DELETE * FROM Candidates";
+		String query2 = "DELETE * FROM Propositions";
+		String query3 = "DELETE * FROM Voters";
+		String query4 = "DELETE * FROM Votes";
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			connection = Database.getConnection();
+			statement = connection.createStatement();
+			statement.executeUpdate(query1);
+			statement.executeUpdate(query2);
+			statement.executeUpdate(query3);
+			statement.executeUpdate(query4);
+		} finally {
+			
+			statement.close();
+			connection.close();
+		}
+	}
 }
