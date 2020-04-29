@@ -18,7 +18,7 @@ public class ContinueAsCreatorCommand implements Command {
 	
     @Override
     public String toString() {
-        return "Continue as Election Creator";
+        return "Continue as Election Manager";
     }
 
 }
