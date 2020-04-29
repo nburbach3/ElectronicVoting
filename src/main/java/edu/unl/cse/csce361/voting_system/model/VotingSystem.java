@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class VotingSystem {
 	/*
@@ -75,6 +77,16 @@ public class VotingSystem {
 		return candidates;
 	}
 
+	public static Map<String, ArrayList<Candidate>> getPositions() throws SQLException {
+		HashMap<String, ArrayList<Candidate>> positions = new HashMap<String, ArrayList<Candidate>>();
+		ArrayList<Candidate> candidates = getCandidates();
+		
+		for(Candidate candidate : candidates) {
+			//if(positions.containsKey(key))
+		}
+		return positions;
+	}
+	
 	public static void removeCandidate(Candidate candidate) throws SQLException {
 		String query = String.format("DELETE FROM Candidates WHERE firstName='%s' AND lastName='%s'",
 				candidate.getFirstName(), candidate.getLastName());
