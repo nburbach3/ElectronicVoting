@@ -40,21 +40,21 @@ public class EnterCandidateInformationCommand implements Command {
 		GridPane.setConstraints(firstName, 0, 1);
 		grid.getChildren().add(firstName);
 		final TextField party = new TextField();
-		party.setPromptText("Enter Political Party (i.e. Republican/Democrat/etc.)");
+		party.setPromptText("Political Party (i.e. Republican/Democrat/etc.)");
 		party.getText();
 		GridPane.setConstraints(party, 0, 2);
 		grid.getChildren().add(party);
 		final TextField position = new TextField();
-		party.setPromptText("Enter Position Being Run For");
-		party.getText();
-		GridPane.setConstraints(party, 0, 3);
-		grid.getChildren().add(party);
+		position.setPromptText("Position Being Run For");
+		position.getText();
+		GridPane.setConstraints(position, 0, 3);
+		grid.getChildren().add(position);
 
 		final Label label = new Label();
 		GridPane.setConstraints(label, 0, 4);
 		GridPane.setColumnSpan(label, 2);
 		grid.getChildren().add(label);
-		Scene scene = new Scene(grid, 400, 150);
+		Scene scene = new Scene(grid, 550, 200);
 		candidateCreation.setScene(scene);
 		candidateCreation.show();
 

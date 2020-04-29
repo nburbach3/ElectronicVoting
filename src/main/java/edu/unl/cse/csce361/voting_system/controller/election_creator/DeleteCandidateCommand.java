@@ -56,6 +56,7 @@ public class DeleteCandidateCommand implements Command {
 				try {
 					Candidate candidate = VotingSystem.getCandidate(fName, lName);
 					VotingSystem.removeCandidate(candidate);
+					label.setText(fName + " " + lName + " has been deleted.");
 				} catch (SQLException e) {
 					System.out.println("Error deleting candidate");
 					e.printStackTrace();
