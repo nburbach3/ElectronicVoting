@@ -163,6 +163,15 @@ public class VotingSystem {
 		} finally {
 			statement.close();
 			connection.close();
+		if (validateVoter(voter) == true) {
+			try {
+				connection = Database.getConnection();
+				statement = connection.createStatement();
+				statement.executeUpdate(query);
+			} finally {
+				statement.close();
+				connection.close();
+			}
 		}
 	}
 
