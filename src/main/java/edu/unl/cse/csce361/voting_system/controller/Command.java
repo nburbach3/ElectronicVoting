@@ -1,14 +1,11 @@
 package edu.unl.cse.csce361.voting_system.controller;
 
-import java.sql.SQLException;
-
 public interface Command {
     /**
      * <p>The method to be called whenever the user selects a command.</p>
      * <p>In general, implementations should delegate the behavior to an object in the model subsystem.</p>
-     * @throws SQLException 
      */
-    default void execute() throws SQLException {
+    default void execute() {
         System.err.println(this.getClass() + " not yet implemented.");
     }
 
