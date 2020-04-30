@@ -156,6 +156,7 @@ public class VotingSystem {
 		String query = "INSERT INTO Voters (firstName, lastName, hasVoted) " + values;
 		Connection connection = null;
 		Statement statement = null;
+		if (validateVoter(voter) == true) {
 			try {
 				connection = Database.getConnection();
 				statement = connection.createStatement();
@@ -164,6 +165,7 @@ public class VotingSystem {
 				statement.close();
 				connection.close();
 			}
+		}
 	}
 
 	public static void removeVoter(Voter voter) throws SQLException {

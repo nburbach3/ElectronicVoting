@@ -1,6 +1,8 @@
 package edu.unl.cse.csce361.voting_system.controller.voter;
 
 import edu.unl.cse.csce361.voting_system.controller.Command;
+import edu.unl.cse.csce361.voting_system.model.Candidate;
+import edu.unl.cse.csce361.voting_system.model.Proposition;
 import edu.unl.cse.csce361.voting_system.model.VotingSystem;
 import edu.unl.cse.csce361.voting_system.model.Voter;
 import javafx.event.ActionEvent;
@@ -8,12 +10,17 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class EnterVoterInformationCommand implements Command {
 
@@ -22,8 +29,8 @@ public class EnterVoterInformationCommand implements Command {
         grid.setPadding(new Insets(30, 30, 30, 30));
         grid.setVgap(5);
         grid.setHgap(5);
-        Stage candidateCreation = new Stage();
-        candidateCreation.setTitle("Voter Authentication");
+        Stage voterValidation = new Stage();
+        voterValidation.setTitle("Voter Authentication");
 
         Button authenticate = new Button("Authenticate");
         GridPane.setConstraints(authenticate, 1, 0);
@@ -45,8 +52,8 @@ public class EnterVoterInformationCommand implements Command {
         GridPane.setColumnSpan(label, 2);
         grid.getChildren().add(label);
         Scene scene = new Scene(grid, 400, 150);
-        candidateCreation.setScene(scene);
-        candidateCreation.show();
+        voterValidation.setScene(scene);
+        voterValidation.show();
 
         authenticate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -54,10 +61,96 @@ public class EnterVoterInformationCommand implements Command {
                 Voter voter = new Voter (firstName.getText(), lastName.getText(), 0);
                 try {
                     if (VotingSystem.validateVoter(voter)) {
-                        
+                        voterValidation.close();
+                        GridPane grid = new GridPane();
+                        grid.setPadding(new Insets(30, 30, 30, 30));
+                        grid.setVgap(5);
+                        grid.setHgap(15);
+                        Stage voterBallot = new Stage();
+                        voterBallot.setTitle("Voter Ballot");
+
+                        Map<String, ArrayList<Candidate>> candidateMap = VotingSystem.getPositions();
+                        int columnCount = 0;
+                        ArrayList<ComboBox> candidatesComboBoxes = new ArrayList<>();
+                        for (Map.Entry<String, ArrayList<Candidate>> entry: candidateMap.entrySet()) {
+                            Label label = new Label();
+                            label.setText(entry.getKey());
+                            GridPane.setConstraints(label, columnCount, 1);
+                            grid.getChildren().add(label);
+                            ComboBox comboBox = new ComboBox();
+                            for (Candidate candidate: entry.getValue()) {
+                                comboBox.getItems().add(candidate.getLastName());
+                            }
+                            GridPane.setConstraints(comboBox, columnCount, 2);
+                            grid.getChildren().add(comboBox);
+                            candidatesComboBoxes.add(comboBox);
+                            grid.getColumnConstraints().add(new ColumnConstraints(100));
+                            columnCount++;
+                        }
+
+                        ArrayList<Proposition> propositions = VotingSystem.getPropositions();
+                        ArrayList<ComboBox> propositionsComboBoxes = new ArrayList<>();
+                        for (Proposition proposition: propositions) {
+                            Label label = new Label();
+                            label.setText(proposition.getProposition());
+                            GridPane.setConstraints(label, columnCount, 1);
+                            grid.getChildren().add(label);
+                            ComboBox yesNoComboBox = new ComboBox();
+                            yesNoComboBox.getItems().add("Yes");
+                            yesNoComboBox.getItems().add("No");
+                            GridPane.setConstraints(yesNoComboBox, columnCount, 2);
+                            grid.getChildren().add(yesNoComboBox);
+                            propositionsComboBoxes.add(yesNoComboBox);
+                            grid.getColumnConstraints().add(new ColumnConstraints(200));
+                            columnCount++;
+                        }
+
+                        Button enter = new Button("Enter");
+                        GridPane.setConstraints(enter, columnCount+1, 4);
+                        grid.getColumnConstraints().add(new ColumnConstraints(100));
+                        grid.getChildren().add(enter);
+
+                        Scene scene = new Scene(grid, candidatesComboBoxes.size()*200 + propositionsComboBoxes.size()*400,
+                                300);
+                        voterBallot.setScene(scene);
+                        voterBallot.show();
+
+                        int finalColumnCount = columnCount;
+                        enter.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent actionEvent) {
+                                Boolean hasVoted = true;
+                                for (ComboBox list: candidatesComboBoxes) {
+                                    if (list.getValue() == null) {
+                                        hasVoted = false;
+                                    }
+                                }
+                                for (ComboBox list: propositionsComboBoxes) {
+                                    if (list.getValue() == null) {
+                                        hasVoted = false;
+                                    }
+                                }
+                                if (hasVoted) {
+                                    Voter voter = new Voter(firstName.getText(), lastName.getText(), 1);
+                                    try {
+                                        VotingSystem.addVoter(voter);
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                } else {
+                                    Label label = new Label();
+                                    label.setText("Please vote for all candidates and propositions");
+                                    GridPane.setConstraints(label, finalColumnCount +1, 3);
+                                    grid.getChildren().add(label);
+                                    return;
+                                }
+
+                            }
+                        });
                     }
                 } catch (SQLException e) {
-
+                    e.printStackTrace();
                 }
             }
         });
