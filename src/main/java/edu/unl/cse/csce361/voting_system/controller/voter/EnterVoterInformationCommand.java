@@ -140,26 +140,26 @@ public class EnterVoterInformationCommand implements Command {
 
 									}
 								}
+								int propositionNumber = 0;
 								for (ComboBox box : propositionsComboBoxes) {
 									if (box.getValue() == null) {
 										hasVoted = false;
 									} else {
-										for (Proposition proposition : propositions) {
-											if (box.getValue().equals("Yes")) {
-												try {
-													VotingSystem.addVote(voter, null, proposition, 1);
-												} catch (SQLException e) {
-													e.printStackTrace();
-												}
-											} else {
-												try {
-													VotingSystem.addVote(voter, null, proposition, 0);
-												} catch (SQLException e) {
-													e.printStackTrace();
-												}
+										if (box.getValue().equals("Yes")) {
+											try {
+												VotingSystem.addVote(voter, null, propositions.get(propositionNumber), 1);
+											} catch (SQLException e) {
+												e.printStackTrace();
+											}
+										} else {
+											try {
+												VotingSystem.addVote(voter, null, propositions.get(propositionNumber), 0);
+											} catch (SQLException e) {
+												e.printStackTrace();
 											}
 										}
 									}
+									propositionNumber++;
 								}
 								if (hasVoted) {
 									try {
@@ -178,6 +178,12 @@ public class EnterVoterInformationCommand implements Command {
 
 							}
 						});
+					} else {
+						Label label = new Label();
+						GridPane.setConstraints(label, 1, 2);
+						label.setText("You have already voted!");
+						grid.getChildren().add(label);
+						return;
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();

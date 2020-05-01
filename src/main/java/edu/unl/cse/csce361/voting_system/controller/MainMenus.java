@@ -19,7 +19,8 @@ public class MainMenus {
     ));
     
     public static final List<Command> voterMenu = Collections.unmodifiableList(Arrays.asList(
-            new EnterVoterInformationCommand()
+            new EnterVoterInformationCommand(),
+			new SeeVoterInformationCommand()
     ));
     
     public static final List<Command> creatorMenu = Collections.unmodifiableList(Arrays.asList(
