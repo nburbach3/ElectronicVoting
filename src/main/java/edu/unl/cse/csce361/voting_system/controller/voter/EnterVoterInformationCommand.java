@@ -70,48 +70,49 @@ public class EnterVoterInformationCommand implements Command {
                         voterBallot.setTitle("Voter Ballot");
 
                         Map<String, ArrayList<Candidate>> candidateMap = VotingSystem.getPositions();
-                        int columnCount = 0;
+                        int columnCount = 1;
                         ArrayList<ComboBox> candidatesComboBoxes = new ArrayList<>();
                         for (Map.Entry<String, ArrayList<Candidate>> entry: candidateMap.entrySet()) {
                             Label label = new Label();
                             label.setText(entry.getKey());
-                            GridPane.setConstraints(label, columnCount, 1);
+                            GridPane.setConstraints(label, 0, columnCount);
                             grid.getChildren().add(label);
                             ComboBox comboBox = new ComboBox();
+                            columnCount++;
                             for (Candidate candidate: entry.getValue()) {
                                 comboBox.getItems().add(candidate.getLastName());
                             }
-                            GridPane.setConstraints(comboBox, columnCount, 2);
+                            GridPane.setConstraints(comboBox, 0, columnCount);
                             grid.getChildren().add(comboBox);
                             candidatesComboBoxes.add(comboBox);
-                            grid.getColumnConstraints().add(new ColumnConstraints(100));
                             columnCount++;
                         }
 
+                        columnCount++;
                         ArrayList<Proposition> propositions = VotingSystem.getPropositions();
                         ArrayList<ComboBox> propositionsComboBoxes = new ArrayList<>();
                         for (Proposition proposition: propositions) {
                             Label label = new Label();
                             label.setText(proposition.getProposition());
-                            GridPane.setConstraints(label, columnCount, 1);
+                            GridPane.setConstraints(label, 0, columnCount);
+                            columnCount++;
                             grid.getChildren().add(label);
                             ComboBox yesNoComboBox = new ComboBox();
                             yesNoComboBox.getItems().add("Yes");
                             yesNoComboBox.getItems().add("No");
-                            GridPane.setConstraints(yesNoComboBox, columnCount, 2);
+                            GridPane.setConstraints(yesNoComboBox, 0, columnCount);
                             grid.getChildren().add(yesNoComboBox);
                             propositionsComboBoxes.add(yesNoComboBox);
-                            grid.getColumnConstraints().add(new ColumnConstraints(200));
+                            grid.getColumnConstraints().add(new ColumnConstraints(400));
                             columnCount++;
                         }
 
                         Button enter = new Button("Enter");
-                        GridPane.setConstraints(enter, columnCount+1, 4);
-                        grid.getColumnConstraints().add(new ColumnConstraints(100));
+                        GridPane.setConstraints(enter, 1, columnCount+1);
                         grid.getChildren().add(enter);
 
-                        Scene scene = new Scene(grid, candidatesComboBoxes.size()*200 + propositionsComboBoxes.size()*400,
-                                300);
+                        Scene scene = new Scene(grid, 500,
+                                100 + candidatesComboBoxes.size()*100 + propositionsComboBoxes.size()*100);
                         voterBallot.setScene(scene);
                         voterBallot.show();
 
@@ -137,11 +138,11 @@ public class EnterVoterInformationCommand implements Command {
                                     } catch (SQLException e) {
                                         e.printStackTrace();
                                     }
-
+                                    voterBallot.close();
                                 } else {
                                     Label label = new Label();
                                     label.setText("Please vote for all candidates and propositions");
-                                    GridPane.setConstraints(label, finalColumnCount +1, 3);
+                                    GridPane.setConstraints(label, 3, finalColumnCount +1);
                                     grid.getChildren().add(label);
                                     return;
                                 }
@@ -158,6 +159,6 @@ public class EnterVoterInformationCommand implements Command {
 
     @Override
     public String toString() {
-        return "Authenticate Voter";
+        return "Vote";
     }
 }
