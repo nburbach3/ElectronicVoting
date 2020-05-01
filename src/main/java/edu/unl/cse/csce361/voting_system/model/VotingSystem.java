@@ -223,30 +223,31 @@ public class VotingSystem {
 		Integer voterId = null;
 		Integer candidateId = null;
 		Integer propositionId = null;
+		String updateQuery = "";
 		if (!validateVoter(voter)) {
-			// addVoter(voter);
+			addVoter(voter);
 		}
 		ArrayList<Voter> voters = getVoters();
 
 		for (Voter voterOption : voters) {
-			if (voter.equals(voterOption)) {
-
+			if (voter.getFirstName().equals(voterOption.getFirstName()) && voter.getLastName().equals(voterOption.getLastName())) {
 				voterId = voter.getVoterId();
 			}
 		}
 		if (!candidate.equals(null)) {
 			ArrayList<Candidate> candidates = getCandidates();
 			for (Candidate candidateOption : candidates) {
-				if (candidateOption.equals(candidate)) {
+				if (candidateOption.getFirstName().equals(candidate.getFirstName()) && candidateOption.getLastName().equals(candidate.getLastName())) {
 					candidateId = candidateOption.getCandidateId();
+					updateQuery = String.format("UPDATE Candidates SET voteCount = %d WHERE firstName = '%s' AND lastName = '%s'", candidateOption.getVoteCount()+1, candidate.getFirstName(), candidate.getLastName());
 				}
 			}
 		} else if (!proposition.equals(null)) {
 			ArrayList<Proposition> propositions = getPropositions();
 			for (Proposition propositionOption : propositions) {
-				if (propositionOption.equals(proposition)) {
-
+				if (propositionOption.getProposition().equals(proposition.getProposition())) {
 					propositionId = proposition.getPropositionId();
+					updateQuery = String.format("UPDATE Propositions SET voteCount = %d WHERE proposition = '%s'", propositionOption.getVoteCount()+propositionSelection, proposition.getProposition());
 				}
 			}
 		}
@@ -260,6 +261,7 @@ public class VotingSystem {
 				connection = Database.getConnection();
 				statement = connection.createStatement();
 				statement.executeQuery(query);
+				statement.executeUpdate(updateQuery);
 			} finally {
 				statement.close();
 				connection.close();
