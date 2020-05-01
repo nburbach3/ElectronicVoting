@@ -187,11 +187,12 @@ public class VotingSystem {
 
 	public static boolean validateVoter(Voter voter) throws SQLException {
 		ArrayList<Voter> voters = getVoters();
-		if (voters.contains(voter)) {
-			return false;
-		} else {
-			return true;
+		for (Voter voterOption : voters) {
+			if (voter.getFirstName().equals(voterOption.getFirstName()) && voter.getLastName().equals(voterOption.getLastName())) {
+				return false;
+			}
 		}
+		return true;
 	}
 
 	public static ArrayList<Voter> getVoters() throws SQLException {
@@ -224,7 +225,7 @@ public class VotingSystem {
 		Integer candidateId = null;
 		Integer propositionId = null;
 		String updateQuery = "";
-		if (!validateVoter(voter)) {
+		if (validateVoter(voter)) {
 			addVoter(voter);
 		}
 		ArrayList<Voter> voters = getVoters();
@@ -238,7 +239,6 @@ public class VotingSystem {
 			ArrayList<Candidate> candidates = getCandidates();
 			for (Candidate candidateOption : candidates) {
 				if (candidateOption.getFirstName().equals(candidate.getFirstName()) && candidateOption.getLastName().equals(candidate.getLastName())) {
-					System.out.println("voterInfo 3");
 					candidateId = Integer.valueOf(candidateOption.getCandidateId());
 					updateQuery = String.format("UPDATE Candidates SET voteCount = %d WHERE firstName = '%s' AND lastName = '%s'", candidateOption.getVoteCount()+1, candidate.getFirstName(), candidate.getLastName());
 				}
@@ -247,7 +247,6 @@ public class VotingSystem {
 			ArrayList<Proposition> propositions = getPropositions();
 			for (Proposition propositionOption : propositions) {
 				if (propositionOption.getProposition().equals(proposition.getProposition())) {
-					System.out.println("voterInfo 4");
 					propositionId = Integer.valueOf(propositionOption.getPropositionId());
 					updateQuery = String.format("UPDATE Propositions SET voteCount = %d WHERE proposition = '%s'", propositionOption.getVoteCount()+propositionSelection, proposition.getProposition());
 				}

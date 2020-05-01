@@ -131,7 +131,6 @@ public class EnterVoterInformationCommand implements Command {
 												if (candidate.getLastName().equals(box.getValue())) {
 													try {
 														VotingSystem.addVote(voter, candidate, null, null);
-														System.out.println("voterInfo 1");
 													} catch (SQLException e) {
 														e.printStackTrace();
 													}
@@ -149,7 +148,6 @@ public class EnterVoterInformationCommand implements Command {
 										if (box.getValue().equals("Yes")) {
 											try {
 												VotingSystem.addVote(voter, null, propositions.get(propositionNumber), 1);
-												System.out.println("voterInfo 2");
 											} catch (SQLException e) {
 												e.printStackTrace();
 											}
@@ -180,6 +178,12 @@ public class EnterVoterInformationCommand implements Command {
 
 							}
 						});
+					} else {
+						Label label = new Label();
+						GridPane.setConstraints(label, 1, 2);
+						label.setText("You have already voted!");
+						grid.getChildren().add(label);
+						return;
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
