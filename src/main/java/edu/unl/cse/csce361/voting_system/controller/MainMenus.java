@@ -27,7 +27,8 @@ public class MainMenus {
     		new DeleteCandidateCommand(),
     		new EnterPropositionInformationCommand(),
     		new DeletePropositionCommand(),
-    		new DisplayResultsCommand()
+    		new DisplayResultsCommand(),
+    		new ClearElectionCommand()
     ));
     
     public static final List<Command> thirdPartyMenu = Collections.unmodifiableList(Arrays.asList(
