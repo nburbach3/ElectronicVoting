@@ -131,6 +131,7 @@ public class EnterVoterInformationCommand implements Command {
 												if (candidate.getLastName().equals(box.getValue())) {
 													try {
 														VotingSystem.addVote(voter, candidate, null, null);
+														System.out.println("voterInfo 1");
 													} catch (SQLException e) {
 														e.printStackTrace();
 													}
@@ -140,26 +141,27 @@ public class EnterVoterInformationCommand implements Command {
 
 									}
 								}
+								int propositionNumber = 0;
 								for (ComboBox box : propositionsComboBoxes) {
 									if (box.getValue() == null) {
 										hasVoted = false;
 									} else {
-										for (Proposition proposition : propositions) {
-											if (box.getValue().equals("Yes")) {
-												try {
-													VotingSystem.addVote(voter, null, proposition, 1);
-												} catch (SQLException e) {
-													e.printStackTrace();
-												}
-											} else {
-												try {
-													VotingSystem.addVote(voter, null, proposition, 0);
-												} catch (SQLException e) {
-													e.printStackTrace();
-												}
+										if (box.getValue().equals("Yes")) {
+											try {
+												VotingSystem.addVote(voter, null, propositions.get(propositionNumber), 1);
+												System.out.println("voterInfo 2");
+											} catch (SQLException e) {
+												e.printStackTrace();
+											}
+										} else {
+											try {
+												VotingSystem.addVote(voter, null, propositions.get(propositionNumber), 0);
+											} catch (SQLException e) {
+												e.printStackTrace();
 											}
 										}
 									}
+									propositionNumber++;
 								}
 								if (hasVoted) {
 									try {

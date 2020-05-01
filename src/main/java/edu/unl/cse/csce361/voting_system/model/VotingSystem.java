@@ -234,25 +234,27 @@ public class VotingSystem {
 				voterId = voter.getVoterId();
 			}
 		}
-		if (!candidate.equals(null)) {
+		if (candidate != null) {
 			ArrayList<Candidate> candidates = getCandidates();
 			for (Candidate candidateOption : candidates) {
 				if (candidateOption.getFirstName().equals(candidate.getFirstName()) && candidateOption.getLastName().equals(candidate.getLastName())) {
+					System.out.println("voterInfo 3");
 					candidateId = candidateOption.getCandidateId();
 					updateQuery = String.format("UPDATE Candidates SET voteCount = %d WHERE firstName = '%s' AND lastName = '%s'", candidateOption.getVoteCount()+1, candidate.getFirstName(), candidate.getLastName());
 				}
 			}
-		} else if (!proposition.equals(null)) {
+		} else if (proposition != null) {
 			ArrayList<Proposition> propositions = getPropositions();
 			for (Proposition propositionOption : propositions) {
 				if (propositionOption.getProposition().equals(proposition.getProposition())) {
+					System.out.println("voterInfo 4");
 					propositionId = proposition.getPropositionId();
 					updateQuery = String.format("UPDATE Propositions SET voteCount = %d WHERE proposition = '%s'", propositionOption.getVoteCount()+propositionSelection, proposition.getProposition());
 				}
 			}
 		}
 
-		String values = String.format("VALUES(%i,%i,%i,%i)", voterId, candidateId, propositionId, propositionSelection);
+		String values = String.format("VALUES(%d,%d,%d,%d)", voterId, candidateId, propositionId, propositionSelection);
 		String query = "INSERT INTO Votes(idVoter, idCandidate, idProposition, propositionSelection) " + values;
 		Connection connection = null;
 		Statement statement = null;
