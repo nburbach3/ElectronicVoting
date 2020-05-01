@@ -180,6 +180,12 @@ public class EnterVoterInformationCommand implements Command {
 
 							}
 						});
+					} else {
+						Label label = new Label();
+						GridPane.setConstraints(label, 1, 2);
+						label.setText("You have already voted!");
+						grid.getChildren().add(label);
+						return;
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
