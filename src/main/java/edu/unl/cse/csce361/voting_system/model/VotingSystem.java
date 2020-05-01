@@ -231,7 +231,7 @@ public class VotingSystem {
 
 		for (Voter voterOption : voters) {
 			if (voter.getFirstName().equals(voterOption.getFirstName()) && voter.getLastName().equals(voterOption.getLastName())) {
-				voterId = voter.getVoterId();
+				voterId = Integer.valueOf(voterOption.getVoterId());
 			}
 		}
 		if (candidate != null) {
@@ -239,7 +239,7 @@ public class VotingSystem {
 			for (Candidate candidateOption : candidates) {
 				if (candidateOption.getFirstName().equals(candidate.getFirstName()) && candidateOption.getLastName().equals(candidate.getLastName())) {
 					System.out.println("voterInfo 3");
-					candidateId = candidateOption.getCandidateId();
+					candidateId = Integer.valueOf(candidateOption.getCandidateId());
 					updateQuery = String.format("UPDATE Candidates SET voteCount = %d WHERE firstName = '%s' AND lastName = '%s'", candidateOption.getVoteCount()+1, candidate.getFirstName(), candidate.getLastName());
 				}
 			}
@@ -248,7 +248,7 @@ public class VotingSystem {
 			for (Proposition propositionOption : propositions) {
 				if (propositionOption.getProposition().equals(proposition.getProposition())) {
 					System.out.println("voterInfo 4");
-					propositionId = proposition.getPropositionId();
+					propositionId = Integer.valueOf(propositionOption.getPropositionId());
 					updateQuery = String.format("UPDATE Propositions SET voteCount = %d WHERE proposition = '%s'", propositionOption.getVoteCount()+propositionSelection, proposition.getProposition());
 				}
 			}
@@ -258,17 +258,17 @@ public class VotingSystem {
 		String query = "INSERT INTO Votes(idVoter, idCandidate, idProposition, propositionSelection) " + values;
 		Connection connection = null;
 		Statement statement = null;
-		if (validateCandidate(candidate) == false) {
+		//if (validateCandidate(candidate) == false) {
 			try {
 				connection = Database.getConnection();
 				statement = connection.createStatement();
-				statement.executeQuery(query);
+				statement.executeUpdate(query);
 				statement.executeUpdate(updateQuery);
 			} finally {
 				statement.close();
 				connection.close();
 			}
-		}
+		//}
 
 	}
 
