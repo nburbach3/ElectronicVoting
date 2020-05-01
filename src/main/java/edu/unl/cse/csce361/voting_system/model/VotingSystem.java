@@ -410,4 +410,28 @@ public class VotingSystem {
 		}
 		con.close();
 	}
+	
+	public static void clearElection() {
+		String query1 = "DELETE * FROM Votes";
+		String query2 = "DELETE * FROM Voters";
+		String query3 = "DELETE * FROM Candidates";
+		String query4 = "DELETE * FROM Propositions";
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			connection = Database.getConnection();
+			statement = connection.createStatement();
+			statement.executeUpdate(query1);
+			statement.executeUpdate(query2);
+			statement.executeUpdate(query3);
+			statement.executeUpdate(query4);
+			statement.close();
+			connection.close();
+		} catch (Exception e) {
+			System.out.println("SQL Exception: ");
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+		
+	}
 }
