@@ -62,7 +62,6 @@ public class SeeVoterInformationCommand implements Command {
                     System.out.println("SQL Exception: ");
                     e.printStackTrace();
                 }
-                StringBuilder output = new StringBuilder("Voter does not exist.");
 
                 ArrayList<Candidate> candidates = null;
                 try {
@@ -78,25 +77,28 @@ public class SeeVoterInformationCommand implements Command {
                     e.printStackTrace();
                 }
 
+                StringBuilder output = new StringBuilder("");
+
                 for (Vote vote: voterVotes) {
                     for (Candidate candidate: candidates) {
-                        if (vote.getCandidate().equals(candidate.getCandidateId())) {
-                            output.append("You voted for: ").append(candidate.getLastName()).append(" in the ")
-                                    .append(candidate.getPosition()).append(" race.\n");
+                        if (vote.getCandidate() != null && vote.getCandidate().getCandidateId() == candidate.getCandidateId()) {
+                            output.append("You voted for: ").append(candidate.getLastName()).append("\nin the ")
+                                    .append(candidate.getPosition()).append(" race.\n\n");
                         }
                     }
                     for (Proposition proposition: propositions) {
-                        if (vote.getProposition().equals(proposition.getPropositionId())) {
-                            output.append("You voted ").append(vote.getPropositionVote()).append(" for the propositiom: ")
-                                    .append(proposition.getProposition());
+                        if (vote.getProposition() != null && vote.getProposition().getPropositionId() == proposition.getPropositionId()) {
+                            output.append("You voted ").append(vote.getPropositionVote()).append("\nfor the proposition: ")
+                                    .append(proposition.getProposition()).append("\n\n");
                         }
                     }
                 }
+                if (output.toString().equals("")) {
+                    output.append("Voter does not exist.");
+                }
 
                 UserInterfaceManager.getUI().showInformation(output.toString());
-
-                firstName.setText("");
-                lastName.setText("");
+                candidateCreation.close();
             }
         });
     }
