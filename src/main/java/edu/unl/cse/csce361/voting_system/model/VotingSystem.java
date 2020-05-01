@@ -411,10 +411,10 @@ public class VotingSystem {
 	}
 	
 	public static void clearElection() {
-		String query1 = "DELETE * FROM Votes";
-		String query2 = "DELETE * FROM Voters";
-		String query3 = "DELETE * FROM Candidates";
-		String query4 = "DELETE * FROM Propositions";
+		String query1 = "DELETE FROM Votes";
+		String query2 = "DELETE FROM Voters";
+		String query3 = "DELETE FROM Candidates";
+		String query4 = "DELETE FROM Propositions";
 		Connection connection = null;
 		Statement statement = null;
 		try {

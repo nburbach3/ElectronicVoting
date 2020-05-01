@@ -1,4 +1,4 @@
-package edu.unl.cse.csce361.voting_system.controller.election_creator;
+package edu.unl.cse.csce361.voting_system.controller.election_manager;
 
 import edu.unl.cse.csce361.voting_system.controller.Command;
 import edu.unl.cse.csce361.voting_system.model.VotingSystem;

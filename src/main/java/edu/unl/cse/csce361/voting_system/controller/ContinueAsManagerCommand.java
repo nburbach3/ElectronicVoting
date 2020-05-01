@@ -6,7 +6,7 @@ import java.util.List;
 import edu.unl.cse.csce361.voting_system.view.UserInterfaceManager;
 
 
-public class ContinueAsCreatorCommand implements Command {
+public class ContinueAsManagerCommand implements Command {
 	
 	public void execute() {
         List<Command> newMenu = new LinkedList<>();
@@ -18,7 +18,7 @@ public class ContinueAsCreatorCommand implements Command {
 	
     @Override
     public String toString() {
-        return "Continue as Election Creator";
+        return "Continue as Election Manager";
     }
 
 }
