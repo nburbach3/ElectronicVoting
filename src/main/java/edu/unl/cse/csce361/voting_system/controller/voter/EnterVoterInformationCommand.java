@@ -153,7 +153,7 @@ public class EnterVoterInformationCommand implements Command {
 											}
 										} else {
 											try {
-												VotingSystem.addVote(voter, null, propositions.get(propositionNumber), 0);
+												VotingSystem.addVote(voter, null, propositions.get(propositionNumber), -1);
 											} catch (SQLException e) {
 												e.printStackTrace();
 											}

@@ -29,6 +29,7 @@ public class MainMenus {
     		new EnterPropositionInformationCommand(),
     		new DeletePropositionCommand(),
     		new DisplayResultsCommand(),
+    		new GetWinnerCommand(),
     		new ClearElectionCommand()
     ));
     
