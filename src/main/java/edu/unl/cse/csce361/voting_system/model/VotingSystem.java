@@ -248,7 +248,8 @@ public class VotingSystem {
 			for (Proposition propositionOption : propositions) {
 				if (propositionOption.getProposition().equals(proposition.getProposition())) {
 					propositionId = Integer.valueOf(propositionOption.getPropositionId());
-					updateQuery = String.format("UPDATE Propositions SET voteCount = %d WHERE proposition = '%s'", propositionOption.getVoteCount()+propositionSelection, proposition.getProposition());
+					int newVoteCount = propositionOption.getVoteCount() + propositionSelection.intValue();
+					updateQuery = String.format("UPDATE Propositions SET voteCount = %d WHERE proposition = '%s'", newVoteCount, proposition.getProposition());
 				}
 			}
 		}
