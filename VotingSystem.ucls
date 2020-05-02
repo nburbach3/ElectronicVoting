@@ -1,375 +1,530 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="edu.unl.cse.csce361.voting_system.Main" project="voting_system" 
-    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/Main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1358" y="330"/>    
+  <class id="1" language="java" name="edu.unl.cse.csce361.voting_system.model.Candidate" project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/model/Candidate.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="407" width="241" x="551" y="576"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="edu.unl.cse.csce361.voting_system.controller.ContinueAsCreatorCommand" 
+  <class id="2" language="java" name="edu.unl.cse.csce361.voting_system.model.VotingSystem" project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/model/VotingSystem.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="443" width="293" x="398" y="93"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="edu.unl.cse.csce361.voting_system.model.Voter" project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/model/Voter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="299" width="198" x="832" y="576"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="edu.unl.cse.csce361.voting_system.model.Database" project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/model/Database.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="155" width="198" x="731" y="93"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="edu.unl.cse.csce361.voting_system.model.Proposition" project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/model/Proposition.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="245" width="198" x="1070" y="576"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="edu.unl.cse.csce361.voting_system.model.Vote" project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/model/Vote.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="245" width="198" x="969" y="93"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="edu.unl.cse.csce361.voting_system.controller.ContinueAsManagerCommand" 
     project="voting_system" 
-    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/ContinueAsCreatorCommand.java" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/ContinueAsManagerCommand.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="234" y="100"/>    
+    <position height="-1" width="-1" x="1346" y="152"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="3" language="java" name="edu.unl.cse.csce361.voting_system.controller.Command" project="voting_system" 
+  <interface id="8" language="java" name="edu.unl.cse.csce361.voting_system.controller.Command" project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/Command.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="734" y="328"/>    
+    <position height="-1" width="-1" x="2269" y="434"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="4" language="java" name="edu.unl.cse.csce361.voting_system.controller.ExitCommand" project="voting_system" 
+  <class id="9" language="java" name="edu.unl.cse.csce361.voting_system.controller.ExitCommand" project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/ExitCommand.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="491" y="100"/>    
+    <position height="-1" width="-1" x="1607" y="152"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="edu.unl.cse.csce361.voting_system.controller.ContinueAsVoterCommand" 
+  <class id="10" language="java" name="edu.unl.cse.csce361.voting_system.controller.ContinueAsVoterCommand" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/ContinueAsVoterCommand.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="743" y="100"/>    
+    <position height="-1" width="-1" x="1859" y="152"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="edu.unl.cse.csce361.voting_system.controller.GoBackCommand" 
+  <class id="11" language="java" name="edu.unl.cse.csce361.voting_system.controller.GoBackCommand" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/GoBackCommand.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="995" y="100"/>    
+    <position height="-1" width="-1" x="2111" y="152"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="edu.unl.cse.csce361.voting_system.controller.ContinueAsThirdPartyCommand" 
+  <class id="12" language="java" name="edu.unl.cse.csce361.voting_system.controller.ContinueAsThirdPartyCommand" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/ContinueAsThirdPartyCommand.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1262" y="100"/>    
+    <position height="-1" width="-1" x="2378" y="152"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="edu.unl.cse.csce361.voting_system.controller.MainMenus" project="voting_system" 
+  <class id="13" language="java" name="edu.unl.cse.csce361.voting_system.controller.MainMenus" project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/MainMenus.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1101" y="326"/>    
+    <position height="-1" width="-1" x="2645" y="134"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" 
-    name="edu.unl.cse.csce361.voting_system.controller.election_creator.EnterCandidateInformationCommand" 
+  <class id="14" language="java" 
+    name="edu.unl.cse.csce361.voting_system.controller.election_manager.EnterPropositionInformationCommand" 
     project="voting_system" 
-    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/election_creator/EnterCandidateInformationCommand.java" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/election_manager/EnterPropositionInformationCommand.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="242" y="326"/>    
+    <position height="-1" width="-1" x="1464" y="738"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="edu.unl.cse.csce361.voting_system.controller.third_party.SearchVoterCommand" 
+  <class id="15" language="java" 
+    name="edu.unl.cse.csce361.voting_system.controller.election_manager.DeleteCandidateCommand" project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/election_manager/DeleteCandidateCommand.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1798" y="738"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" 
+    name="edu.unl.cse.csce361.voting_system.controller.election_manager.DisplayResultsCommand" project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/election_manager/DisplayResultsCommand.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2132" y="738"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" 
+    name="edu.unl.cse.csce361.voting_system.controller.election_manager.EnterCandidateInformationCommand" 
+    project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/election_manager/EnterCandidateInformationCommand.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2466" y="738"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" 
+    name="edu.unl.cse.csce361.voting_system.controller.election_manager.DeletePropositionCommand" 
+    project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/election_manager/DeletePropositionCommand.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2800" y="738"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" 
+    name="edu.unl.cse.csce361.voting_system.controller.election_manager.ClearElectionCommand" project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/election_manager/ClearElectionCommand.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3134" y="738"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="edu.unl.cse.csce361.voting_system.controller.third_party.SearchVoterCommand" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/third_party/SearchVoterCommand.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="230" y="494"/>    
+    <position height="-1" width="-1" x="2938" y="150"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" 
+  <class id="21" language="java" 
     name="edu.unl.cse.csce361.voting_system.controller.third_party.DisplayVoterInformationCommand" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/third_party/DisplayVoterInformationCommand.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="232" y="640"/>    
+    <position height="-1" width="-1" x="3240" y="150"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="edu.unl.cse.csce361.voting_system.controller.voter.EnterVoterInformationCommand" 
+  <class id="22" language="java" name="edu.unl.cse.csce361.voting_system.controller.voter.SeeVoterInformationCommand" 
+    project="voting_system" 
+    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/voter/SeeVoterInformationCommand.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3236" y="360"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="edu.unl.cse.csce361.voting_system.controller.voter.EnterVoterInformationCommand" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/controller/voter/EnterVoterInformationCommand.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="548" y="638"/>    
+    <position height="-1" width="-1" x="3239" y="544"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="edu.unl.cse.csce361.voting_system.model.VotingSystem" project="voting_system" 
-    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/model/VotingSystem.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="234" y="920"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="14" language="java" name="edu.unl.cse.csce361.voting_system.model.Database" project="voting_system" 
-    file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/model/Database.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="512" y="920"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="edu.unl.cse.csce361.voting_system.view.AbstractUserInterface" 
+  <class id="24" language="java" name="edu.unl.cse.csce361.voting_system.view.AbstractUserInterface" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/view/AbstractUserInterface.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="898" y="697"/>    
+    <position height="-1" width="-1" x="1480" y="989"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="edu.unl.cse.csce361.voting_system.view.UserInterfaceManager" 
+  <class id="25" language="java" name="edu.unl.cse.csce361.voting_system.view.UserInterfaceManager" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/view/UserInterfaceManager.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1170" y="643"/>    
+    <position height="-1" width="-1" x="1752" y="935"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="edu.unl.cse.csce361.voting_system.view.StringBox" project="voting_system" 
+  <class id="26" language="java" name="edu.unl.cse.csce361.voting_system.view.StringBox" project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/view/StringBox.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1690" y="724"/>    
+    <position height="-1" width="-1" x="2272" y="1016"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="edu.unl.cse.csce361.voting_system.view.Screens" project="voting_system" 
+  <class id="27" language="java" name="edu.unl.cse.csce361.voting_system.view.Screens" project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/view/Screens.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1401" y="634"/>    
+    <position height="-1" width="-1" x="1983" y="926"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="edu.unl.cse.csce361.voting_system.view.StringBox.StringRow" 
+  <class id="28" language="java" name="edu.unl.cse.csce361.voting_system.view.StringBox.StringRow" 
     project="voting_system" file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/view/StringBox.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1674" y="1009"/>    
+    <position height="-1" width="-1" x="2256" y="1301"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="20" language="java" name="edu.unl.cse.csce361.voting_system.view.UserInterface" project="voting_system" 
+  <interface id="29" language="java" name="edu.unl.cse.csce361.voting_system.view.UserInterface" project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/view/UserInterface.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1055" y="1018"/>    
+    <position height="-1" width="-1" x="1637" y="1310"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="21" language="java" 
+  <class id="30" language="java" 
     name="edu.unl.cse.csce361.voting_system.view.javafxview.GraphicalUserInterface.JavaFXInterface" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/view/javafxview/GraphicalUserInterface.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1900" y="425"/>    
+    <position height="-1" width="-1" x="1088" y="1355"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="edu.unl.cse.csce361.voting_system.view.javafxview.CommandButton" 
+  <class id="31" language="java" name="edu.unl.cse.csce361.voting_system.view.javafxview.CommandButton" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/view/javafxview/CommandButton.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1565" y="94"/>    
+    <position height="-1" width="-1" x="1859" y="446"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="edu.unl.cse.csce361.voting_system.view.javafxview.GraphicalUserInterface" 
+  <class id="32" language="java" name="edu.unl.cse.csce361.voting_system.view.javafxview.GraphicalUserInterface" 
     project="voting_system" 
     file="/voting_system/src/main/java/edu/unl/cse/csce361/voting_system/view/javafxview/GraphicalUserInterface.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1947" y="188"/>    
+    <position height="-1" width="-1" x="1105" y="1124"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="24">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="25" name="ui"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+  <realization id="33">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="34">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="35" name="thirdPartyMenu"/>      
+      <multiplicity id="36" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="27">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <association id="28">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="29" name="command"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
+  <association id="37">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="38" name="mainMenu"/>      
+      <multiplicity id="39" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="31">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <association id="32">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="33" name="displayedCommands"/>      
-      <multiplicity id="34" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="35">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="36" name="thirdPartyMenu"/>      
-      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="38">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <realization id="39">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <realization id="40">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <association id="41">    
+  <association id="40">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="42" name="lastMenu"/>      
-      <multiplicity id="43" minimum="0" maximum="2147483647"/>    
+      <attribute id="41" name="candidate"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="44">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="45" name="rows"/>      
-      <multiplicity id="46" minimum="0" maximum="2147483647"/>    
+  <association id="43">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="44" name="creatorMenu"/>      
+      <multiplicity id="45" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="47">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <generalization id="48">    
+  <realization id="46">    
     <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="15"/>  
-  </generalization>  
-  <realization id="49">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="3"/>  
+    <end type="TARGET" refId="8"/>  
   </realization>  
-  <association id="50">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="51" name="mainMenu"/>      
-      <multiplicity id="52" minimum="0" maximum="2147483647"/>    
+  <realization id="47">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="48">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="49" name="voter"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="53">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="54" name="voterMenu"/>      
-      <multiplicity id="55" minimum="0" maximum="2147483647"/>    
+  <association id="51">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="52" name="lastMenu"/>      
+      <multiplicity id="53" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <realization id="55">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
   <realization id="56">    
     <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="3"/>  
+    <end type="TARGET" refId="8"/>  
   </realization>  
-  <association id="57">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="58" name="creatorMenu"/>      
-      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+  <realization id="57">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="58">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="59" name="displayedCommands"/>      
+      <multiplicity id="60" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="60">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="20"/>  
-  </realization>  
   <realization id="61">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="3"/>  
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="29"/>  
   </realization>  
-  <association id="62">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="63" name="commandMap"/>      
-      <multiplicity id="64" minimum="0" maximum="2147483647"/>    
+  <realization id="62">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="63">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="64" name="voterMenu"/>      
+      <multiplicity id="65" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <realization id="66">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="67">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="68">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="69" name="commandMap"/>      
+      <multiplicity id="70" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="71">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="72">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="73" name="proposition"/>      
+      <multiplicity id="74" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="75">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <nesting id="76">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="28"/>  
+  </nesting>  
+  <realization id="77">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="78">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="79" name="rows"/>      
+      <multiplicity id="80" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="82" name="command"/>      
+      <multiplicity id="83" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="84">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="85">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="86">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="87">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="88" name="ui"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="90">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="30"/>  
+  </nesting>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

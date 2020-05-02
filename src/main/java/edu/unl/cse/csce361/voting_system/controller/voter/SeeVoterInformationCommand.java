@@ -79,6 +79,7 @@ public class SeeVoterInformationCommand implements Command {
 
                 StringBuilder output = new StringBuilder("");
 
+                String yesNo = "";
                 for (Vote vote: voterVotes) {
                     for (Candidate candidate: candidates) {
                         if (vote.getCandidate() != null && vote.getCandidate().getCandidateId() == candidate.getCandidateId()) {
@@ -88,7 +89,12 @@ public class SeeVoterInformationCommand implements Command {
                     }
                     for (Proposition proposition: propositions) {
                         if (vote.getProposition() != null && vote.getProposition().getPropositionId() == proposition.getPropositionId()) {
-                            output.append("You voted ").append(vote.getPropositionVote()).append("\nfor the proposition: ")
+                            if (vote.getPropositionVote() == 1) {
+                                yesNo = "Yes";
+                            } else {
+                                yesNo = "No";
+                            }
+                            output.append("You voted ").append(yesNo).append("\nfor the proposition: ")
                                     .append(proposition.getProposition()).append("\n\n");
                         }
                     }
