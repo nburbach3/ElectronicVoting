@@ -34,11 +34,14 @@ n/13
 
 ### Commit Messages
 
-n/5
+4/5
 
 ```
-(formatting check output)
+Commit a2e0b41a has 1 line too long.
 ```
+
+-   "Add new file" is not a helpful message (x2)
+-   "added vote.java" is barely more helpful
 
 ### Functionality
 
