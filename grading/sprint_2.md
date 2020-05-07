@@ -47,14 +47,25 @@ Commit a2e0b41a has 1 line too long.
 
 n/15
 
+**Look for plain-text votes in database**
+
 ### Software Engineering Practices
 
 n/9
 
+```
+Merges with unresolved conflicts:    0
+Merges without unresolved conflicts: 37
+```
+
+**Look for encapsulation of JDBC**
+
 ### Presentation / Demonstration
 
-n/10
+10/10
 
 ### Bonus Credit
 
-n/5
+0/5
+
+-   None attempted (TDD for honors credit)
